@@ -1,0 +1,538 @@
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+
+    --success: #10b981;
+    --danger: #ef4444;
+
+    --bg: #f5f7fb;
+    --card: #ffffff;
+
+    --text: #1f2937;
+    --text-light: #6b7280;
+
+    --border: #e5e7eb;
+
+    --shadow:
+        0 10px 25px rgba(0, 0, 0, .08);
+
+    --radius: 20px;
+}
+
+/* DARK MODE */
+
+body.dark {
+    --bg: #0f172a;
+    --card: #1e293b;
+
+    --text: #f8fafc;
+    --text-light: #cbd5e1;
+
+    --border: #334155;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, sans-serif;
+    transition: .3s;
+    padding-top: 90px;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.app-header {
+    background: rgba(255, 255, 255, .85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+}
+
+body.dark .app-header {
+    background: rgba(15, 23, 42, .9);
+}
+
+.header-content {
+    min-height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-content h1 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 0;
+}
+
+.header-content p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: .85rem;
+}
+
+#themeToggle {
+    width: 44px;
+    height: 44px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: var(--card);
+    box-shadow: var(--shadow);
+
+    cursor: pointer;
+}
+
+/* ========================================
+   PROGRESS BAR
+======================================== */
+
+.progress-wrapper {
+    margin-bottom: 20px;
+}
+
+.progress {
+    height: 10px;
+    border-radius: 50px;
+}
+
+.progress-bar {
+    width: 0%;
+    background: linear-gradient(90deg,
+            #2563eb,
+            #60a5fa);
+}
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero-section {
+    padding: 20px 0 30px;
+}
+
+.hero-card {
+    background: linear-gradient(135deg,
+            #2563eb,
+            #3b82f6);
+
+    color: white;
+
+    padding: 30px 24px;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 20px 40px rgba(37, 99, 235, .25);
+}
+
+.hero-card h2 {
+    margin-top: 15px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.hero-card p {
+    margin-top: 15px;
+    opacity: .9;
+}
+
+.hero-card .btn {
+    margin-top: 15px;
+    border-radius: 12px;
+}
+
+/* ========================================
+   MENU
+======================================== */
+
+.study-nav {
+    margin-bottom: 30px;
+}
+
+.nav-card {
+    background: var(--card);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 80px;
+
+    border-radius: var(--radius);
+
+    text-decoration: none;
+
+    color: var(--text);
+
+    font-weight: 600;
+
+    box-shadow: var(--shadow);
+
+    transition: .3s;
+}
+
+.nav-card:hover {
+    transform: translateY(-4px);
+}
+
+/* ========================================
+   SECTIONS
+======================================== */
+
+.content-section {
+    margin-bottom: 60px;
+}
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.section-header p {
+    color: var(--text-light);
+}
+
+/* ========================================
+   IMAGES
+======================================== */
+
+.section-image {
+    width: 100%;
+    border-radius: 24px;
+    margin-bottom: 20px;
+    object-fit: cover;
+
+    box-shadow: var(--shadow);
+}
+
+/* ========================================
+   ACCORDION
+======================================== */
+
+.accordion-item {
+    border: none;
+    margin-bottom: 15px;
+
+    border-radius: 18px !important;
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow);
+}
+
+.accordion-button {
+    font-weight: 600;
+    padding: 18px;
+}
+
+.accordion-button:not(.collapsed) {
+    background: #eff6ff;
+    color: var(--primary);
+}
+
+body.dark .accordion-button:not(.collapsed) {
+    background: #172554;
+}
+
+.accordion-body {
+    padding: 20px;
+    line-height: 1.8;
+}
+
+/* ========================================
+   FLASHCARDS
+======================================== */
+
+.flashcards-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.flashcard {
+    perspective: 1000px;
+}
+
+.flashcard-inner {
+    position: relative;
+
+    width: 100%;
+    height: 200px;
+
+    transition: transform .6s;
+    transform-style: preserve-3d;
+
+    cursor: pointer;
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 20px;
+
+    border-radius: 24px;
+
+    backface-visibility: hidden;
+
+    box-shadow: var(--shadow);
+}
+
+.front {
+    background: var(--card);
+}
+
+.back {
+    background: var(--primary);
+    color: white;
+
+    transform: rotateY(180deg);
+}
+
+/* ========================================
+   QUIZ
+======================================== */
+
+#quizContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.question-card {
+    background: var(--card);
+
+    padding: 20px;
+
+    border-radius: 24px;
+
+    box-shadow: var(--shadow);
+}
+
+.question-card h5 {
+    margin-bottom: 15px;
+}
+
+.option {
+    background: #f3f4f6;
+
+    padding: 14px;
+
+    margin-bottom: 10px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+}
+
+body.dark .option {
+    background: #334155;
+}
+
+/* ========================================
+   EXAM
+======================================== */
+
+.exam-info {
+    background: var(--card);
+
+    padding: 20px;
+
+    border-radius: 24px;
+
+    box-shadow: var(--shadow);
+
+    margin-bottom: 20px;
+}
+
+.exam-info ul {
+    padding-left: 20px;
+}
+
+.exam-info li {
+    margin-bottom: 10px;
+}
+
+/* ========================================
+   RESULTADOS
+======================================== */
+
+.result-card {
+    background: var(--card);
+
+    padding: 30px;
+
+    border-radius: 24px;
+
+    text-align: center;
+
+    box-shadow: var(--shadow);
+}
+
+#scoreDisplay {
+    margin-top: 15px;
+
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+
+footer {
+    margin-top: 50px;
+    padding: 40px 0;
+
+    text-align: center;
+
+    color: var(--text-light);
+}
+
+/* ========================================
+   BOTÃO TOPO
+======================================== */
+
+#backToTop {
+    position: fixed;
+
+    bottom: 90px;
+    right: 20px;
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+    color: white;
+
+    font-size: 20px;
+
+    display: none;
+
+    box-shadow: var(--shadow);
+
+    z-index: 999;
+}
+
+/* ========================================
+   BOTTOM NAV
+======================================== */
+
+.mobile-bottom-nav {
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 70px;
+
+    background: var(--card);
+
+    border-top: 1px solid var(--border);
+
+    display: flex;
+
+    justify-content: space-around;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.mobile-bottom-nav a {
+    text-decoration: none;
+    color: var(--text-light);
+
+    font-size: .8rem;
+}
+
+.mobile-bottom-nav a.active {
+    color: var(--primary);
+}
+
+/* ========================================
+   SCROLLBAR
+======================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 50px;
+}
+
+/* ========================================
+   TABLETS
+======================================== */
+
+@media (min-width: 768px) {
+
+    .hero-card {
+        padding: 50px;
+    }
+
+    .flashcards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-image {
+        max-height: 500px;
+    }
+}
+
+/* ========================================
+   DESKTOP
+======================================== */
+
+@media (min-width: 1200px) {
+
+    .flashcards-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .content-section {
+        margin-bottom: 90px;
+    }
+}
