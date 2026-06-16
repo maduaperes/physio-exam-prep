@@ -512,6 +512,44 @@ footer {
 }
 
 /* ========================================
+   ACCORDION — animação leve para mobile
+   Bootstrap anima `height`, que força
+   reflow a cada frame e trava em celular.
+   Em telas pequenas substituímos por
+   opacity + scaleY, que rodam na GPU.
+======================================== */
+
+@media (max-width: 767px) {
+  /* Desativa a transição de height do Bootstrap */
+  .accordion-collapse {
+    transition: none !important;
+  }
+
+  /* Esconde com opacity+scale em vez de height:0 */
+  .accordion-collapse:not(.show) {
+    display: block !important;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    pointer-events: none;
+    /* height 0 para não ocupar espaço quando fechado */
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .accordion-collapse.show,
+  .accordion-collapse.collapsing {
+    opacity: 1;
+    transform: scaleY(1);
+    max-height: none;
+    pointer-events: auto;
+    transition:
+      opacity 0.22s ease,
+      transform 0.22s ease !important;
+  }
+}
+
+/* ========================================
    TABLETS
 ======================================== */
 
