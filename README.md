@@ -146,7 +146,7 @@ Possíveis evoluções para o projeto:
 
 Maria Eduarda Arruda Peres
 
-Desenvolvedora de Software em formação, com foco em desenvolvimento Full Stack, aplicações educacionais e criação de experiências digitais intuitivas.
+Desenvolvedora de Software em formação, com foco em aplicações educacionais e criação de experiências digitais intuitivas.
 
 ---
 
