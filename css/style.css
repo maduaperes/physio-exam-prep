@@ -512,39 +512,29 @@ footer {
 }
 
 /* ========================================
-   ACCORDION — controle total via JS custom
-   Bootstrap animava height via JS (reflow).
-   Aqui desativamos tudo e deixamos o
-   script.js controlar só opacity, que roda
-   no compositor do Safari/WebKit sem travar.
+   ACCORDION — ZERO TRAVAMENTOS (CORRIGIDO)
+   Removemos o conflito de propriedades e 
+   forçamos a abertura instantânea.
 ======================================== */
 
+/* Desativa completamente a animação de altura do Bootstrap */
 .accordion-collapse {
   transition: none !important;
-  overflow: hidden !important;
+  animation: none !important;
 }
 
+/* Remove o efeito elástico ou rotação lenta do ícone da seta */
+.accordion-button::after {
+  transition: none !important;
+}
+
+/* Garante que o Bootstrap trate o abrir/fechar de forma nativa e imediata */
 .accordion-collapse:not(.show) {
-  display: block !important;
-  max-height: 0 !important;
-  opacity: 0 !important;
-  pointer-events: none;
-  visibility: hidden;
-}
-
-.accordion-collapse.acc-open {
-  visibility: visible;
-  pointer-events: auto;
-  max-height: 2000px !important;
-  opacity: 1 !important;
-  transition: opacity 0.22s ease !important;
+  display: none !important;
 }
 
 .accordion-collapse.show {
-  visibility: visible;
-  pointer-events: auto;
-  max-height: 2000px !important;
-  opacity: 1 !important;
+  display: block !important;
 }
 
 /* ========================================
