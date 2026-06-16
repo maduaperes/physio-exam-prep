@@ -71,8 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ======================================
-       SIMULADO
-    ====================================== */
+    SIMULADO
+ ====================================== */
 
     const submitQuiz =
         document.getElementById("submitQuiz");
@@ -89,39 +89,63 @@ document.addEventListener("DOMContentLoaded", () => {
     const scoreFeedback =
         document.getElementById("scoreFeedback");
 
+    /* QUESTÕES OBJETIVAS */
+
     const answers = {
         q1: "B",
-        q2: "C",
-        q3: "A"
+        q3: "C",
+        q5: "B",
+        q7: "B",
+        q9: "A"
     };
 
-    const explanations = {
+    /* RESPOSTAS DAS DISSERTATIVAS */
 
-        q1: {
-            correct:
-                "Correto! Tuberculose exige precaução por aerossóis, máscara N95/PFF2 e ambiente adequado.",
-            incorrect:
-                "Resposta incorreta. A tuberculose é transmitida por aerossóis, exigindo máscara N95/PFF2."
-        },
+    const essayAnswers = {
 
-        q2: {
-            correct:
-                "Correto! Imperícia ocorre quando há falta de conhecimento ou habilidade técnica.",
-            incorrect:
-                "Resposta incorreta. O caso descreve falta de conhecimento técnico, caracterizando imperícia."
-        },
+        q2: `
+    Negligência: deixar de fazer algo que deveria ser feito.
+    Imprudência: agir de forma precipitada ou sem cautela.
+    Imperícia: falta de conhecimento ou habilidade técnica.
+    `,
 
-        q3: {
-            correct:
-                "Correto! A retenção de CO₂ leva à acidose respiratória.",
-            incorrect:
-                "Resposta incorreta. O acúmulo de CO₂ provoca acidose respiratória."
-        }
+        q4: `
+    1. Antes de tocar o paciente.
+    2. Antes de realizar procedimento limpo/asséptico.
+    3. Após risco de exposição a fluidos corporais.
+    4. Após tocar o paciente.
+    5. Após tocar superfícies próximas ao paciente.
+    `,
+
+        q6: `
+    X = Controle de hemorragias graves.
+    A = Vias aéreas e proteção cervical.
+    B = Respiração.
+    C = Circulação.
+    D = Avaliação neurológica.
+    E = Exposição e controle térmico.
+    `,
+
+        q8: `
+    Identificar obstrução total, realizar golpes interescapulares e
+    Manobra de Heimlich até expulsão do corpo estranho ou perda de consciência.
+    `,
+
+        q10: `
+    P = Proteção
+    R = Repouso
+    I = Ice (Gelo)
+    C = Compressão
+    E = Elevação
+    `
     };
 
     submitQuiz.addEventListener("click", () => {
 
         let score = 0;
+        let totalObjective = Object.keys(answers).length;
+
+        /* CORREÇÃO DAS OBJETIVAS */
 
         Object.keys(answers).forEach(question => {
 
@@ -138,70 +162,88 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!selected) {
 
                 feedback.className =
-                    "feedback-box alert alert-warning mt-2 py-2 small";
+                    "feedback-box alert alert-warning mt-3";
 
                 feedback.innerHTML =
-                    "Selecione uma alternativa.";
+                    "Nenhuma alternativa selecionada.";
 
                 return;
             }
 
-            if (
-                selected.value === answers[question]
-            ) {
+            if (selected.value === answers[question]) {
 
                 score++;
 
                 feedback.className =
-                    "feedback-box alert alert-success mt-2 py-2 small";
+                    "feedback-box alert alert-success mt-3";
 
                 feedback.innerHTML =
-                    explanations[question].correct;
+                    "Resposta correta.";
 
             } else {
 
                 feedback.className =
-                    "feedback-box alert alert-danger mt-2 py-2 small";
+                    "feedback-box alert alert-danger mt-3";
 
                 feedback.innerHTML =
-                    explanations[question].incorrect;
+                    `Resposta incorreta. Alternativa correta: <strong>${answers[question]}</strong>`;
             }
 
         });
 
+        /* MOSTRAR GABARITO DAS DISSERTATIVAS */
+
+        Object.keys(essayAnswers).forEach(question => {
+
+            const textarea =
+                document.querySelector(
+                    `textarea[name="${question}"]`
+                );
+
+            const feedback =
+                document.getElementById(
+                    `f${question.replace("q", "")}`
+                );
+
+            feedback.className =
+                "feedback-box alert alert-info mt-3";
+
+            feedback.innerHTML = `
+            <strong>Sua resposta:</strong>
+            <hr>
+            ${textarea.value || "Não respondida"}
+            <hr>
+            <strong>Resposta esperada:</strong>
+            <br>
+            ${essayAnswers[question]}
+        `;
+        });
+
+        /* RESULTADO FINAL */
+
         const percentage =
             Math.round(
-                (score / 3) * 100
+                (score / totalObjective) * 100
             );
 
         scoreDisplay.textContent =
             `${percentage}%`;
 
-        let feedbackText = "";
+        if (percentage >= 80) {
 
-        if (percentage === 100) {
+            scoreFeedback.textContent =
+                "Excelente desempenho.";
 
-            feedbackText =
-                "Excelente! Você domina os principais tópicos da revisão.";
+        } else if (percentage >= 60) {
 
-        } else if (percentage >= 70) {
-
-            feedbackText =
-                "Muito bom! Revise apenas alguns detalhes.";
-
-        } else if (percentage >= 50) {
-
-            feedbackText =
-                "Bom desempenho, mas vale reforçar alguns conteúdos.";
+            scoreFeedback.textContent =
+                "Bom desempenho.";
 
         } else {
 
-            feedbackText =
-                "Recomenda-se revisar todo o material antes da prova.";
+            scoreFeedback.textContent =
+                "Recomenda-se revisar o conteúdo.";
         }
-
-        scoreFeedback.textContent =
-            feedbackText;
 
         resultsSection.classList.remove(
             "d-none"
@@ -224,11 +266,15 @@ document.addEventListener("DOMContentLoaded", () => {
     resetQuiz.addEventListener("click", () => {
 
         document
-            .querySelectorAll(
-                'input[type="radio"]'
-            )
+            .querySelectorAll('input[type="radio"]')
             .forEach(input => {
                 input.checked = false;
+            });
+
+        document
+            .querySelectorAll("textarea")
+            .forEach(textarea => {
+                textarea.value = "";
             });
 
         document
@@ -236,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .forEach(box => {
 
                 box.className =
-                    "feedback-box alert d-none mt-2 py-2 small";
+                    "feedback-box alert d-none mt-3";
 
                 box.innerHTML = "";
             });
