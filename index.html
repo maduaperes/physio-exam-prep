@@ -1,801 +1,1589 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FisioPrep - Revisão para Prova</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body class="bg-light text-dark">
-
+  <body class="bg-light text-dark">
     <div id="loader" class="d-none"></div>
 
     <header class="app-header fixed-top bg-white border-bottom shadow-sm py-2">
-        <div class="container d-flex justify-content-between align-items-center">
-            <div>
-                <h1 class="h4 mb-0 fw-bold text-primary"><i class="bi bi-heart-pulse-fill me-2"></i>FisioPrep</h1>
-                <p class="small text-muted mb-0">Revisão Acadêmica</p>
-            </div>
+      <div class="container d-flex justify-content-between align-items-center">
+        <div>
+          <h1 class="h4 mb-0 fw-bold text-primary">
+            <i class="bi bi-heart-pulse-fill me-2"></i>FisioPrep
+          </h1>
+          <p class="small text-muted mb-0">Revisão Acadêmica</p>
         </div>
+      </div>
     </header>
 
-    <section class="progress-wrapper position-fixed w-100" style="top: 62px; z-index: 1020;">
-        <div class="progress rounded-0" style="height: 6px;">
-            <div id="readingProgress" class="progress-bar bg-success" role="progressbar" style="width: 0%"></div>
-        </div>
+    <section
+      class="progress-wrapper position-fixed w-100"
+      style="top: 62px; z-index: 1020"
+    >
+      <div class="progress rounded-0" style="height: 6px">
+        <div
+          id="readingProgress"
+          class="progress-bar bg-success"
+          role="progressbar"
+          style="width: 0%"
+        ></div>
+      </div>
     </section>
 
-    <section class="hero-section container" style="margin-top: 100px;">
-        <div class="hero-card card border-0 bg-primary text-white p-4 shadow-sm text-center text-sm-start rounded-4">
-            <div class="card-body">
-                <span class="badge bg-white text-primary mb-3 fw-bold">
-                    Preparação para Avaliação
-                </span>
-                <h2 class="fw-bold mb-3">
-                    Biossegurança, Gestão de Riscos e Primeiros Socorros
-                </h2>
-                <p class="opacity-90 mb-4">
-                    Tudo o que você precisa para revisar antes da prova. Aqui você encontra resumos simples, flashcards
-                    para memorizar mais rápido e um simulado para testar seus conhecimentos.
-                </p>
-                <a href="#biosseguranca" class="btn btn-light text-primary fw-bold px-4 py-2 shadow-sm">
-                    Começar Estudo <i class="bi bi-arrow-right ms-1"></i>
-                </a>
-            </div>
+    <section class="hero-section container" style="margin-top: 100px">
+      <div
+        class="hero-card card border-0 bg-primary text-white p-4 shadow-sm text-center text-sm-start rounded-4"
+      >
+        <div class="card-body">
+          <span class="badge bg-white text-primary mb-3 fw-bold">
+            Preparação para Avaliação
+          </span>
+          <h2 class="fw-bold mb-3">
+            Biossegurança, Gestão de Riscos e Primeiros Socorros
+          </h2>
+          <p class="opacity-90 mb-4">
+            Tudo o que você precisa para revisar antes da prova. Aqui você
+            encontra resumos simples, flashcards para memorizar mais rápido e um
+            simulado para testar seus conhecimentos.
+          </p>
+          <a
+            href="#biosseguranca"
+            class="btn btn-light text-primary fw-bold px-4 py-2 shadow-sm"
+          >
+            Começar Estudo <i class="bi bi-arrow-right ms-1"></i>
+          </a>
         </div>
+      </div>
     </section>
 
     <nav class="study-nav container my-4">
-        <div class="row g-2">
-            <div class="col-6">
-                <a href="#biosseguranca"
-                    class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark">
-                    <div class="card-body p-2">
-                        <i class="bi bi-shield-check text-danger h2 d-block mb-1"></i>
-                        <span class="fw-bold small">Biossegurança</span>
-                    </div>
-                </a>
+      <div class="row g-2">
+        <div class="col-6">
+          <a
+            href="#biosseguranca"
+            class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark"
+          >
+            <div class="card-body p-2">
+              <i class="bi bi-shield-check text-danger h2 d-block mb-1"></i>
+              <span class="fw-bold small">Biossegurança</span>
             </div>
-            <div class="col-6">
-                <a href="#primeiros-socorros"
-                    class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark">
-                    <div class="card-body p-2">
-                        <i class="bi bi-crosshair text-success h2 d-block mb-1"></i>
-                        <span class="fw-bold small">P. Socorros</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-6">
-                <a href="#flashcards"
-                    class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark">
-                    <div class="card-body p-2">
-                        <i class="bi bi-card-text text-warning h2 d-block mb-1"></i>
-                        <span class="fw-bold small">Flashcards</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-6">
-                <a href="#quiz"
-                    class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark">
-                    <div class="card-body p-2">
-                        <i class="bi bi-lightbulb text-info h2 d-block mb-1"></i>
-                        <span class="fw-bold small">Simulado</span>
-                    </div>
-                </a>
-            </div>
+          </a>
         </div>
+        <div class="col-6">
+          <a
+            href="#primeiros-socorros"
+            class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark"
+          >
+            <div class="card-body p-2">
+              <i class="bi bi-crosshair text-success h2 d-block mb-1"></i>
+              <span class="fw-bold small">P. Socorros</span>
+            </div>
+          </a>
+        </div>
+        <div class="col-6">
+          <a
+            href="#flashcards"
+            class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark"
+          >
+            <div class="card-body p-2">
+              <i class="bi bi-card-text text-warning h2 d-block mb-1"></i>
+              <span class="fw-bold small">Flashcards</span>
+            </div>
+          </a>
+        </div>
+        <div class="col-6">
+          <a
+            href="#quiz"
+            class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark"
+          >
+            <div class="card-body p-2">
+              <i class="bi bi-lightbulb text-info h2 d-block mb-1"></i>
+              <span class="fw-bold small">Simulado</span>
+            </div>
+          </a>
+        </div>
+      </div>
     </nav>
 
     <section id="biosseguranca" class="content-section container my-5 pt-4">
-        <div class="section-header text-center mb-4">
-            <h2 class="fw-bold border-bottom border-danger border-3 d-inline-block pb-2">1. Biossegurança e Legislação
-            </h2>
-            <p class="text-muted small">Aprenda como evitar acidentes, prevenir infecções e trabalhar com segurança
-                durante os atendimentos.</p>
+      <div class="section-header text-center mb-4">
+        <h2
+          class="fw-bold border-bottom border-danger border-3 d-inline-block pb-2"
+        >
+          1. Biossegurança e Legislação
+        </h2>
+        <p class="text-muted small">
+          Aprenda como evitar acidentes, prevenir infecções e trabalhar com
+          segurança durante os atendimentos.
+        </p>
+      </div>
+
+      <div class="text-center mb-4">
+        <img
+          src="img/biosseguranca.png"
+          alt="Biossegurança e Legislação"
+          class="section-image img-fluid rounded-3 shadow-sm"
+          style="
+            max-height: 180px;
+            width: 100%;
+            object-fit: cover;
+            object-position: 50% 85%;
+          "
+        />
+      </div>
+
+      <div class="accordion shadow-sm" id="biosAccordion">
+        <div
+          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
+        >
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button fw-bold bg-white text-dark"
+              data-bs-toggle="collapse"
+              data-bs-target="#riscos"
+            >
+              <i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>
+              Classificação dos Riscos Ambientais (NR-9)
+            </button>
+          </h2>
+          <div
+            id="riscos"
+            class="accordion-collapse collapse show"
+            data-bs-parent="#biosAccordion"
+          >
+            <div class="accordion-body bg-white small text-secondary">
+              <ul class="list-group list-group-flush">
+                <p>
+                  No ambiente de saúde existem vários tipos de riscos que podem
+                  afetar profissionais e pacientes.
+                </p>
+
+                <p>
+                  <strong>Riscos físicos:</strong> ruído, calor, frio, radiação
+                  e vibrações.
+                </p>
+
+                <p>
+                  <strong>Riscos químicos:</strong> medicamentos, produtos de
+                  limpeza e outras substâncias químicas.
+                </p>
+
+                <p>
+                  <strong>Riscos biológicos:</strong> vírus, bactérias, fungos e
+                  outros microrganismos.
+                </p>
+
+                <p>
+                  <strong>Riscos ergonômicos:</strong> postura inadequada,
+                  movimentos repetitivos e excesso de esforço físico.
+                </p>
+
+                <p>
+                  <strong>Riscos de acidentes:</strong> quedas, choques
+                  elétricos, cortes e perfurações.
+                </p>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <div class="text-center mb-4">
-            <img src="https://images.unsplash.com/photo-1605176173609-a0067079b419?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Biossegurança e Legislação" class="section-image img-fluid rounded-3 shadow-sm"
-                style="max-height: 180px; width: 100%; object-fit: cover;">
+        <div
+          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
+        >
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed fw-bold bg-white text-dark"
+              data-bs-toggle="collapse"
+              data-bs-target="#higiene"
+            >
+              <i class="bi bi-hand-thumbs-up-fill text-primary me-2"></i>
+              Higienização das Mãos (Os 5 Momentos)
+            </button>
+          </h2>
+          <div
+            id="higiene"
+            class="accordion-collapse collapse"
+            data-bs-parent="#biosAccordion"
+          >
+            <div class="accordion-body bg-white small text-secondary">
+              <p>
+                Lavar ou higienizar as mãos continua sendo a forma mais simples
+                e eficiente de evitar infecções.
+              </p>
+
+              <p><strong>Os 5 momentos mais importantes são:</strong></p>
+
+              <ul>
+                <li>Antes de tocar o paciente.</li>
+                <li>Antes de realizar qualquer procedimento.</li>
+                <li>Após contato com sangue ou secreções.</li>
+                <li>Após tocar o paciente.</li>
+                <li>Após tocar objetos próximos ao paciente.</li>
+              </ul>
+
+              <p>
+                Se cair na prova perguntando qual é a medida mais eficaz contra
+                infecções hospitalares, a resposta geralmente é:
+                <strong>higienização das mãos</strong>.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="accordion shadow-sm" id="biosAccordion">
-
-            <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
-                <h2 class="accordion-header">
-                    <button class="accordion-button fw-bold bg-white text-dark" data-bs-toggle="collapse"
-                        data-bs-target="#riscos">
-                        <i class="bi bi-exclamation-triangle-fill text-warning me-2"></i> Classificação dos Riscos
-                        Ambientais (NR-9)
-                    </button>
-                </h2>
-                <div id="riscos" class="accordion-collapse collapse show" data-bs-parent="#biosAccordion">
-                    <div class="accordion-body bg-white small text-secondary">
-                        <ul class="list-group list-group-flush">
-                            <p>
-                                No ambiente de saúde existem vários tipos de riscos que podem afetar profissionais e
-                                pacientes.
-                            </p>
-
-                            <p>
-                                <strong>Riscos físicos:</strong> ruído, calor, frio, radiação e vibrações.
-                            </p>
-
-                            <p>
-                                <strong>Riscos químicos:</strong> medicamentos, produtos de limpeza e outras substâncias
-                                químicas.
-                            </p>
-
-                            <p>
-                                <strong>Riscos biológicos:</strong> vírus, bactérias, fungos e outros microrganismos.
-                            </p>
-
-                            <p>
-                                <strong>Riscos ergonômicos:</strong> postura inadequada, movimentos repetitivos e
-                                excesso de esforço físico.
-                            </p>
-
-                            <p>
-                                <strong>Riscos de acidentes:</strong> quedas, choques elétricos, cortes e perfurações.
-                            </p>
-                        </ul>
-                    </div>
-                </div>
+        <div
+          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
+        >
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed fw-bold bg-white text-dark"
+              data-bs-toggle="collapse"
+              data-bs-target="#isolamento"
+            >
+              <i class="bi bi-person-slash text-danger me-2"></i> Precauções e
+              Diretrizes de Isolamento
+            </button>
+          </h2>
+          <div
+            id="isolamento"
+            class="accordion-collapse collapse"
+            data-bs-parent="#biosAccordion"
+          >
+            <div class="accordion-body bg-white small text-secondary p-0">
+              <div class="table-responsive">
+                <table
+                  class="table table-striped table-sm mb-0 small align-middle"
+                >
+                  <tbody>
+                    <tr>
+                      <td class="fw-bold ps-2 text-primary">Padrão</td>
+                      <td>
+                        Vale para todos os pacientes. Inclui lavar as mãos e
+                        usar EPIs quando necessário.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="fw-bold ps-2 text-warning">Contato</td>
+                      <td>
+                        Usada quando o microrganismo é transmitido pelo toque.
+                        Exige luvas e avental.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="fw-bold ps-2 text-orange"
+                        style="color: #fd7e14"
+                      >
+                        Gotículas
+                      </td>
+                      <td>
+                        Indicada para doenças como gripe. Utiliza máscara
+                        cirúrgica.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="fw-bold ps-2 text-danger">Aerossóis</td>
+                      <td>
+                        Utilizada em doenças como tuberculose. É necessário usar
+                        máscara N95 porque as partículas ficam suspensas no ar
+                        por mais tempo.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-
-            <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed fw-bold bg-white text-dark" data-bs-toggle="collapse"
-                        data-bs-target="#higiene">
-                        <i class="bi bi-hand-thumbs-up-fill text-primary me-2"></i> Higienização das Mãos (Os 5
-                        Momentos)
-                    </button>
-                </h2>
-                <div id="higiene" class="accordion-collapse collapse" data-bs-parent="#biosAccordion">
-                    <div class="accordion-body bg-white small text-secondary">
-                        <p>
-                            Lavar ou higienizar as mãos continua sendo a forma mais simples e eficiente de evitar
-                            infecções.
-                        </p>
-
-                        <p><strong>Os 5 momentos mais importantes são:</strong></p>
-
-                        <ul>
-                            <li>Antes de tocar o paciente.</li>
-                            <li>Antes de realizar qualquer procedimento.</li>
-                            <li>Após contato com sangue ou secreções.</li>
-                            <li>Após tocar o paciente.</li>
-                            <li>Após tocar objetos próximos ao paciente.</li>
-                        </ul>
-
-                        <p>
-                            Se cair na prova perguntando qual é a medida mais eficaz contra infecções hospitalares, a
-                            resposta geralmente é: <strong>higienização das mãos</strong>.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed fw-bold bg-white text-dark" data-bs-toggle="collapse"
-                        data-bs-target="#isolamento">
-                        <i class="bi bi-person-slash text-danger me-2"></i> Precauções e Diretrizes de Isolamento
-                    </button>
-                </h2>
-                <div id="isolamento" class="accordion-collapse collapse" data-bs-parent="#biosAccordion">
-                    <div class="accordion-body bg-white small text-secondary p-0">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-sm mb-0 small align-middle">
-                                <tbody>
-                                    <tr>
-                                        <td class="fw-bold ps-2 text-primary">Padrão</td>
-                                        <td>Vale para todos os pacientes. Inclui lavar as mãos e usar EPIs quando
-                                            necessário.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold ps-2 text-warning">Contato</td>
-                                        <td>Usada quando o microrganismo é transmitido pelo toque. Exige luvas e
-                                            avental.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold ps-2 text-orange" style="color: #fd7e14;">Gotículas</td>
-                                        <td>Indicada para doenças como gripe. Utiliza máscara cirúrgica.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold ps-2 text-danger">Aerossóis</td>
-                                        <td>Utilizada em doenças como tuberculose. É necessário usar máscara N95 porque
-                                            as partículas ficam suspensas no ar por mais tempo.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed fw-bold bg-white text-dark" data-bs-toggle="collapse"
-                        data-bs-target="#pgrss">
-                        <i class="bi bi-trash3-fill text-success me-2"></i> Gestão de Resíduos de Saúde (PGRSS)
-                    </button>
-                </h2>
-                <div id="pgrss" class="accordion-collapse collapse" data-bs-parent="#biosAccordion">
-                    <div class="accordion-body bg-white small text-secondary">
-                        <p>
-                            O PGRSS organiza o descarte correto dos resíduos produzidos nos serviços de saúde.
-                        </p>
-
-                        <p>
-                            Uma das etapas mais importantes é separar o lixo corretamente no momento em que ele é
-                            gerado.
-                        </p>
-
-                        <ul>
-                            <li><strong>Grupo A:</strong> materiais contaminados com sangue ou secreções.</li>
-                            <li><strong>Grupo B:</strong> medicamentos e produtos químicos.</li>
-                            <li><strong>Grupo C:</strong> materiais radioativos.</li>
-                            <li><strong>Grupo D:</strong> lixo comum, como papel e restos de alimentos.</li>
-                            <li><strong>Grupo E:</strong> perfurocortantes, como agulhas e lâminas.</li>
-                        </ul>
-
-                        <p>
-                            Questão clássica de prova: agulhas pertencem ao <strong>Grupo E</strong>.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed fw-bold bg-white text-dark" data-bs-toggle="collapse"
-                        data-bs-target="#legal">
-                        <i class="bi bi-bank2 text-secondary me-2"></i> Ergonomia, Ética e Legislação Acadêmica
-                    </button>
-                </h2>
-                <div id="legal" class="accordion-collapse collapse" data-bs-parent="#biosAccordion">
-                    <div class="accordion-body bg-white small text-secondary">
-                        <p>
-                            Quem trabalha na área da saúde passa muito tempo em pé, movimenta pacientes e realiza
-                            esforço físico constantemente.
-                        </p>
-
-                        <p>
-                            Por isso, a ergonomia ajuda a evitar dores e lesões, principalmente na coluna.
-                        </p>
-
-                        <p>
-                            Ao transferir um paciente, o ideal é usar a força das pernas e evitar sobrecarregar as
-                            costas.
-                        </p>
-
-                        <p>
-                            <strong>Negligência:</strong> quando o profissional deixa de fazer algo que deveria fazer.
-                        </p>
-
-                        <p>
-                            <strong>Imprudência:</strong> quando age sem cuidado ou de forma precipitada.
-                        </p>
-
-                        <p>
-                            <strong>Imperícia:</strong> quando realiza um procedimento sem possuir conhecimento técnico
-                            suficiente.
-                        </p>
-
-                        <p>
-                            A Lei de Biossegurança regula o uso de organismos geneticamente modificados e pesquisas com
-                            células-tronco.
-                        </p>
-
-                        <p>
-                            A Lei Arouca estabelece regras para pesquisas com animais e segue o princípio dos 3Rs:
-                            Substituir, Reduzir e Refinar.
-                        </p>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+
+        <div
+          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
+        >
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed fw-bold bg-white text-dark"
+              data-bs-toggle="collapse"
+              data-bs-target="#pgrss"
+            >
+              <i class="bi bi-trash3-fill text-success me-2"></i> Gestão de
+              Resíduos de Saúde (PGRSS)
+            </button>
+          </h2>
+          <div
+            id="pgrss"
+            class="accordion-collapse collapse"
+            data-bs-parent="#biosAccordion"
+          >
+            <div class="accordion-body bg-white small text-secondary">
+              <p>
+                O PGRSS organiza o descarte correto dos resíduos produzidos nos
+                serviços de saúde.
+              </p>
+
+              <p>
+                Uma das etapas mais importantes é separar o lixo corretamente no
+                momento em que ele é gerado.
+              </p>
+
+              <ul>
+                <li>
+                  <strong>Grupo A:</strong> materiais contaminados com sangue ou
+                  secreções.
+                </li>
+                <li>
+                  <strong>Grupo B:</strong> medicamentos e produtos químicos.
+                </li>
+                <li><strong>Grupo C:</strong> materiais radioativos.</li>
+                <li>
+                  <strong>Grupo D:</strong> lixo comum, como papel e restos de
+                  alimentos.
+                </li>
+                <li>
+                  <strong>Grupo E:</strong> perfurocortantes, como agulhas e
+                  lâminas.
+                </li>
+              </ul>
+
+              <p>
+                Questão clássica de prova: agulhas pertencem ao
+                <strong>Grupo E</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
+        >
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed fw-bold bg-white text-dark"
+              data-bs-toggle="collapse"
+              data-bs-target="#legal"
+            >
+              <i class="bi bi-bank2 text-secondary me-2"></i> Ergonomia, Ética e
+              Legislação Acadêmica
+            </button>
+          </h2>
+          <div
+            id="legal"
+            class="accordion-collapse collapse"
+            data-bs-parent="#biosAccordion"
+          >
+            <div class="accordion-body bg-white small text-secondary">
+              <p>
+                Quem trabalha na área da saúde passa muito tempo em pé,
+                movimenta pacientes e realiza esforço físico constantemente.
+              </p>
+
+              <p>
+                Por isso, a ergonomia ajuda a evitar dores e lesões,
+                principalmente na coluna.
+              </p>
+
+              <p>
+                Ao transferir um paciente, o ideal é usar a força das pernas e
+                evitar sobrecarregar as costas.
+              </p>
+
+              <p>
+                <strong>Negligência:</strong> quando o profissional deixa de
+                fazer algo que deveria fazer.
+              </p>
+
+              <p>
+                <strong>Imprudência:</strong> quando age sem cuidado ou de forma
+                precipitada.
+              </p>
+
+              <p>
+                <strong>Imperícia:</strong> quando realiza um procedimento sem
+                possuir conhecimento técnico suficiente.
+              </p>
+
+              <p>
+                A Lei de Biossegurança regula o uso de organismos geneticamente
+                modificados e pesquisas com células-tronco.
+              </p>
+
+              <p>
+                A Lei Arouca estabelece regras para pesquisas com animais e
+                segue o princípio dos 3Rs: Substituir, Reduzir e Refinar.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="primeiros-socorros" class="content-section container my-5 pt-2">
-        <div class="section-header text-center mb-4">
-            <h2 class="fw-bold border-bottom border-success border-3 d-inline-block pb-2">2. Primeiros Socorros e
-                Emergências</h2>
-            <p class="text-muted small">Atuação clínica imediata, suporte básico à vida e bases fisiopatológicas.</p>
+    <section
+      id="primeiros-socorros"
+      class="content-section container my-5 pt-2"
+    >
+      <div class="section-header text-center mb-4">
+        <h2
+          class="fw-bold border-bottom border-success border-3 d-inline-block pb-2"
+        >
+          2. Primeiros Socorros e Emergências
+        </h2>
+        <p class="text-muted small">
+          Atuação clínica imediata, suporte básico à vida e bases
+          fisiopatológicas.
+        </p>
+      </div>
+
+      <div class="text-center mb-4">
+        <img
+          src="img/socorros.png"
+          alt="Protocolo Atendimento de Emergência"
+          class="section-image img-fluid rounded-3 shadow-sm"
+          style="
+            max-height: 180px;
+            width: 100%;
+            object-fit: cover;
+            object-position: bottom;
+          "
+        />
+      </div>
+
+      <div class="accordion shadow-sm" id="socorrosAccordion">
+        <div
+          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
+        >
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button fw-bold bg-white text-dark"
+              data-bs-toggle="collapse"
+              data-bs-target="#xabcde"
+            >
+              <i class="bi bi-heart-pulse text-danger me-2"></i> Avaliação
+              Sistemática: Protocolo XABCDE
+            </button>
+          </h2>
+          <div
+            id="xabcde"
+            class="accordion-collapse collapse show"
+            data-bs-parent="#socorrosAccordion"
+          >
+            <div class="accordion-body bg-white small text-secondary">
+              <p>
+                O protocolo XABCDE ajuda a identificar rapidamente o que pode
+                matar a vítima primeiro.
+              </p>
+
+              <p><strong>X:</strong> controlar sangramentos graves.</p>
+
+              <p>
+                <strong>A:</strong> verificar se as vias aéreas estão livres e
+                proteger a coluna cervical.
+              </p>
+
+              <p>
+                <strong>B:</strong> observar se a vítima está respirando
+                adequadamente.
+              </p>
+
+              <p>
+                <strong>C:</strong> avaliar circulação, pulso e possíveis sinais
+                de choque.
+              </p>
+
+              <p>
+                <strong>D:</strong> verificar o nível de consciência e as
+                pupilas.
+              </p>
+
+              <p>
+                <strong>E:</strong> procurar lesões escondidas sem deixar a
+                vítima perder calor.
+              </p>
+
+              <p>
+                Lembre-se: o X foi adicionado antes do ABCDE porque hemorragias
+                graves podem matar em poucos minutos.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="text-center mb-4">
-            <img src="https://images.unsplash.com/photo-1622551546704-36926ae49878?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Protocolo Atendimento de Emergência" class="section-image img-fluid rounded-3 shadow-sm"
-                style="max-height: 180px; width: 100%; object-fit: cover;">
+        <div
+          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
+        >
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed fw-bold bg-white text-dark"
+              data-bs-toggle="collapse"
+              data-bs-target="#rcp"
+            >
+              <i class="bi bi-activity text-danger me-2"></i> Ressuscitação
+              Cardiopulmonar (RCP) e OVACE
+            </button>
+          </h2>
+          <div
+            id="rcp"
+            class="accordion-collapse collapse"
+            data-bs-parent="#socorrosAccordion"
+          >
+            <div class="accordion-body bg-white small text-secondary">
+              <p>Atualmente a sequência da RCP é CAB.</p>
+
+              <p>
+                Primeiro fazemos as compressões, depois cuidamos das vias aéreas
+                e da respiração.
+              </p>
+
+              <p>
+                As compressões devem ocorrer entre 100 e 120 vezes por minuto e
+                atingir profundidade de aproximadamente 5 a 6 cm em adultos.
+              </p>
+
+              <p>
+                Se a pessoa estiver engasgada e não conseguir falar ou tossir,
+                realize golpes nas costas e a Manobra de Heimlich.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="accordion shadow-sm" id="socorrosAccordion">
+        <div
+          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
+        >
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed fw-bold bg-white text-dark"
+              data-bs-toggle="collapse"
+              data-bs-target="#emergencias"
+            >
+              <i class="bi bi-virus2 text-warning me-2"></i> Emergências
+              Clínicas e Traumáticas
+            </button>
+          </h2>
+          <div
+            id="emergencias"
+            class="accordion-collapse collapse"
+            data-bs-parent="#socorrosAccordion"
+          >
+            <div class="accordion-body bg-white small text-secondary">
+              <p>
+                <strong>Infarto:</strong> dor forte no peito que pode se
+                espalhar para braço, pescoço ou mandíbula. Mantenha a pessoa
+                calma e procure atendimento urgente.
+              </p>
 
-            <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
-                <h2 class="accordion-header">
-                    <button class="accordion-button fw-bold bg-white text-dark" data-bs-toggle="collapse"
-                        data-bs-target="#xabcde">
-                        <i class="bi bi-heart-pulse text-danger me-2"></i> Avaliação Sistemática: Protocolo XABCDE
-                    </button>
-                </h2>
-                <div id="xabcde" class="accordion-collapse collapse show" data-bs-parent="#socorrosAccordion">
-                    <div class="accordion-body bg-white small text-secondary">
-                        <p>
-                            O protocolo XABCDE ajuda a identificar rapidamente o que pode matar a vítima primeiro.
-                        </p>
+              <p>
+                <strong>Hipoglicemia:</strong> queda do açúcar no sangue. Se a
+                pessoa estiver consciente, ofereça algo doce.
+              </p>
 
-                        <p><strong>X:</strong> controlar sangramentos graves.</p>
+              <p>
+                <strong>Crise hipertensiva:</strong> pressão muito elevada que
+                pode colocar a vida em risco.
+              </p>
 
-                        <p><strong>A:</strong> verificar se as vias aéreas estão livres e proteger a coluna cervical.
-                        </p>
+              <p><strong>Desmaio:</strong> deite a pessoa e eleve as pernas.</p>
 
-                        <p><strong>B:</strong> observar se a vítima está respirando adequadamente.</p>
-
-                        <p><strong>C:</strong> avaliar circulação, pulso e possíveis sinais de choque.</p>
-
-                        <p><strong>D:</strong> verificar o nível de consciência e as pupilas.</p>
-
-                        <p><strong>E:</strong> procurar lesões escondidas sem deixar a vítima perder calor.</p>
-
-                        <p>
-                            Lembre-se: o X foi adicionado antes do ABCDE porque hemorragias graves podem matar em poucos
-                            minutos.
-                        </p>
-                    </div>
-                </div>
+              <p>
+                <strong>Convulsão:</strong> afaste objetos perigosos, proteja a
+                cabeça e nunca coloque nada dentro da boca.
+              </p>
             </div>
-
-            <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed fw-bold bg-white text-dark" data-bs-toggle="collapse"
-                        data-bs-target="#rcp">
-                        <i class="bi bi-activity text-danger me-2"></i> Ressuscitação Cardiopulmonar (RCP) e OVACE
-                    </button>
-                </h2>
-                <div id="rcp" class="accordion-collapse collapse" data-bs-parent="#socorrosAccordion">
-                    <div class="accordion-body bg-white small text-secondary">
-                        <p>
-                            Atualmente a sequência da RCP é CAB.
-                        </p>
-
-                        <p>
-                            Primeiro fazemos as compressões, depois cuidamos das vias aéreas e da respiração.
-                        </p>
-
-                        <p>
-                            As compressões devem ocorrer entre 100 e 120 vezes por minuto e atingir profundidade de
-                            aproximadamente 5 a 6 cm em adultos.
-                        </p>
-
-                        <p>
-                            Se a pessoa estiver engasgada e não conseguir falar ou tossir, realize golpes nas costas e a
-                            Manobra de Heimlich.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed fw-bold bg-white text-dark" data-bs-toggle="collapse"
-                        data-bs-target="#emergencias">
-                        <i class="bi bi-virus2 text-warning me-2"></i> Emergências Clínicas e Traumáticas
-                    </button>
-                </h2>
-                <div id="emergencias" class="accordion-collapse collapse" data-bs-parent="#socorrosAccordion">
-                    <div class="accordion-body bg-white small text-secondary">
-                        <p>
-                            <strong>Infarto:</strong> dor forte no peito que pode se espalhar para braço, pescoço ou
-                            mandíbula. Mantenha a pessoa calma e procure atendimento urgente.
-                        </p>
-
-                        <p>
-                            <strong>Hipoglicemia:</strong> queda do açúcar no sangue. Se a pessoa estiver consciente,
-                            ofereça algo doce.
-                        </p>
-
-                        <p>
-                            <strong>Crise hipertensiva:</strong> pressão muito elevada que pode colocar a vida em risco.
-                        </p>
-
-                        <p>
-                            <strong>Desmaio:</strong> deite a pessoa e eleve as pernas.
-                        </p>
-
-                        <p>
-                            <strong>Convulsão:</strong> afaste objetos perigosos, proteja a cabeça e nunca coloque nada
-                            dentro da boca.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed fw-bold bg-white text-dark" data-bs-toggle="collapse"
-                        data-bs-target="#fisioEmerg">
-                        <i class="bi bi-lungs-fill text-info me-2"></i> Tópicos Avançados de Fisioterapia na Emergência
-                    </button>
-                </h2>
-                <div id="fisioEmerg" class="accordion-collapse collapse" data-bs-parent="#socorrosAccordion">
-                    <div class="accordion-body bg-white small text-secondary">
-                        <p>
-                            Durante uma crise de asma, a respiração fica mais difícil e o paciente pode começar a
-                            respirar
-                            muito rápido para tentar compensar a falta de ar.
-                        </p>
-
-                        <p>
-                            <strong>Cheyne-Stokes:</strong> a respiração vai ficando mais forte, depois mais fraca e
-                            pode
-                            parar por alguns segundos.
-                        </p>
-
-                        <p>
-                            <strong>Kussmaul:</strong> respiração muito profunda e acelerada, comum em casos de acidose
-                            metabólica.
-                        </p>
-
-                        <p>
-                            <strong>Biot:</strong> respiração totalmente irregular e imprevisível.
-                        </p>
-
-                        <p>
-                            O gelo ajuda a reduzir dor e inchaço, mas o resfriamento dos músculos acontece de forma
-                            lenta.
-                        </p>
-
-                        <p>
-                            No protocolo P.R.I.C.E. lembre-se:
-                            Proteção, Repouso, Gelo, Compressão e Elevação.
-                        </p>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
 
+        <div
+          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
+        >
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed fw-bold bg-white text-dark"
+              data-bs-toggle="collapse"
+              data-bs-target="#fisioEmerg"
+            >
+              <i class="bi bi-lungs-fill text-info me-2"></i> Tópicos Avançados
+              de Fisioterapia na Emergência
+            </button>
+          </h2>
+          <div
+            id="fisioEmerg"
+            class="accordion-collapse collapse"
+            data-bs-parent="#socorrosAccordion"
+          >
+            <div class="accordion-body bg-white small text-secondary">
+              <p>
+                Durante uma crise de asma, a respiração fica mais difícil e o
+                paciente pode começar a respirar muito rápido para tentar
+                compensar a falta de ar.
+              </p>
+
+              <p>
+                <strong>Cheyne-Stokes:</strong> a respiração vai ficando mais
+                forte, depois mais fraca e pode parar por alguns segundos.
+              </p>
+
+              <p>
+                <strong>Kussmaul:</strong> respiração muito profunda e
+                acelerada, comum em casos de acidose metabólica.
+              </p>
+
+              <p>
+                <strong>Biot:</strong> respiração totalmente irregular e
+                imprevisível.
+              </p>
+
+              <p>
+                O gelo ajuda a reduzir dor e inchaço, mas o resfriamento dos
+                músculos acontece de forma lenta.
+              </p>
+
+              <p>
+                No protocolo P.R.I.C.E. lembre-se: Proteção, Repouso, Gelo,
+                Compressão e Elevação.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="flashcards" class="content-section container my-5">
-        <div class="section-header text-center mb-4">
-            <h2 class="fw-bold border-bottom border-warning border-3 d-inline-block pb-2">3. Flashcards de Memorização
-                Ativa</h2>
-            <p class="text-muted small">Toque nos cards abaixo para revelar a resposta e testar sua memória imediata.
-            </p>
+      <div class="section-header text-center mb-4">
+        <h2
+          class="fw-bold border-bottom border-warning border-3 d-inline-block pb-2"
+        >
+          3. Flashcards de Memorização Ativa
+        </h2>
+        <p class="text-muted small">
+          Toque nos cards abaixo para revelar a resposta e testar sua memória
+          imediata.
+        </p>
+      </div>
+
+      <div class="row g-3 justify-content-center">
+        <div class="col-12 col-sm-6 col-md-4">
+          <div
+            class="flashcard card h-100 border-0 shadow-sm rounded-3 bg-white"
+            style="cursor: pointer; min-height: 120px"
+            onclick="this.classList.toggle('flipped')"
+          >
+            <div
+              class="card-body d-flex align-items-center justify-content-center text-center p-3"
+            >
+              <div class="flashcard-content">
+                <p class="fw-bold text-primary mb-0 q-front">
+                  Qual a conduta imediata em caso de acidente pérfuro-cortante
+                  usado?
+                </p>
+                <p class="text-success small mb-0 d-none a-back">
+                  Lavar abundantemente com água e sabão, notificar imediatamente
+                  o acidente de trabalho e buscar atendimento médico para início
+                  imediato do Protocolo PEP (Profilaxia Pós-Exposição).
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="row g-3 justify-content-center">
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="flashcard card h-100 border-0 shadow-sm rounded-3 bg-white"
-                    style="cursor: pointer; min-height: 120px;" onclick="this.classList.toggle('flipped')">
-                    <div class="card-body d-flex align-items-center justify-content-center text-center p-3">
-                        <div class="flashcard-content">
-                            <p class="fw-bold text-primary mb-0 q-front">Qual a conduta imediata em caso de acidente
-                                pérfuro-cortante usado?</p>
-                            <p class="text-success small mb-0 d-none a-back">Lavar abundantemente com água e sabão,
-                                notificar imediatamente o acidente de trabalho e buscar atendimento médico para início
-                                imediato do Protocolo PEP (Profilaxia Pós-Exposição).</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div
+            class="flashcard card h-100 border-0 shadow-sm rounded-3 bg-white"
+            style="cursor: pointer; min-height: 120px"
+            onclick="this.classList.toggle('flipped')"
+          >
+            <div
+              class="card-body d-flex align-items-center justify-content-center text-center p-3"
+            >
+              <div class="flashcard-content">
+                <p class="fw-bold text-primary mb-0 q-front">
+                  Qual o significado do princípio dos 3Rs na Lei Arouca
+                  (CONCEA)?
+                </p>
+                <p class="text-success small mb-0 d-none a-back">
+                  <strong>S</strong>ubstituir (métodos alternativos),
+                  <strong>R</strong>eduzir (menor número de animais) e
+                  <strong>R</strong>efinar (minimizar dor/estresse por
+                  analgesia).
+                </p>
+              </div>
             </div>
-
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="flashcard card h-100 border-0 shadow-sm rounded-3 bg-white"
-                    style="cursor: pointer; min-height: 120px;" onclick="this.classList.toggle('flipped')">
-                    <div class="card-body d-flex align-items-center justify-content-center text-center p-3">
-                        <div class="flashcard-content">
-                            <p class="fw-bold text-primary mb-0 q-front">Qual o significado do princípio dos 3Rs na Lei
-                                Arouca (CONCEA)?</p>
-                            <p class="text-success small mb-0 d-none a-back"><strong>S</strong>ubstituir (métodos
-                                alternativos), <strong>R</strong>eduzir (menor número de animais) e
-                                <strong>R</strong>efinar (minimizar dor/estresse por analgesia).
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="flashcard card h-100 border-0 shadow-sm rounded-3 bg-white"
-                    style="cursor: pointer; min-height: 120px;" onclick="this.classList.toggle('flipped')">
-                    <div class="card-body d-flex align-items-center justify-content-center text-center p-3">
-                        <div class="flashcard-content">
-                            <p class="fw-bold text-primary mb-0 q-front">O que define o padrão ventilatório de Kussmaul?
-                            </p>
-                            <p class="text-success small mb-0 d-none a-back">Respirações profundas, ruidosas e
-                                hiperventiladas causadas por Acidose, comum na descompensação da Cetoacidose Diabética.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+
+        <div class="col-12 col-sm-6 col-md-4">
+          <div
+            class="flashcard card h-100 border-0 shadow-sm rounded-3 bg-white"
+            style="cursor: pointer; min-height: 120px"
+            onclick="this.classList.toggle('flipped')"
+          >
+            <div
+              class="card-body d-flex align-items-center justify-content-center text-center p-3"
+            >
+              <div class="flashcard-content">
+                <p class="fw-bold text-primary mb-0 q-front">
+                  O que define o padrão ventilatório de Kussmaul?
+                </p>
+                <p class="text-success small mb-0 d-none a-back">
+                  Respirações profundas, ruidosas e hiperventiladas causadas por
+                  Acidose, comum na descompensação da Cetoacidose Diabética.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="quiz" class="content-section container my-5">
-        <div class="card border-0 shadow rounded-4 overflow-hidden mb-4">
-            <div class="card-body bg-dark text-white text-center p-4">
-                <span class="badge bg-warning text-dark mb-2 fw-bold">Nível Acadêmico Superior</span>
-                <h2 class="fw-bold h4">Exame Simulado Oficial</h2>
-                <p class="small text-muted mb-0">Questões elaboradas nos moldes de avaliações universitárias de
-                    Fisioterapia.</p>
+      <div class="card border-0 shadow rounded-4 overflow-hidden mb-4">
+        <div class="card-body bg-dark text-white text-center p-4">
+          <span class="badge bg-warning text-dark mb-2 fw-bold"
+            >Nível Acadêmico Superior</span
+          >
+          <h2 class="fw-bold h4">Exame Simulado Oficial</h2>
+          <p class="small text-muted mb-0">
+            Questões elaboradas nos moldes de avaliações universitárias de
+            Fisioterapia.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="exam-info alert alert-secondary bg-white shadow-sm border-0 rounded-3 mb-4 py-3"
+      >
+        <div class="row text-center g-2 small">
+          <div class="col-4 border-end">
+            <strong>10 Questões</strong><br /><span class="text-muted"
+              >Múltipla Escolha/ Dissertativa</span
+            >
+          </div>
+          <div class="col-4 border-end">
+            <strong>Nota de Corte</strong><br /><span class="text-success"
+              >60% de Acerto</span
+            >
+          </div>
+          <div class="col-4">
+            <strong>Tempo Médio</strong><br /><span class="text-muted"
+              >30 minutos</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <form id="quizForm" class="mb-4">
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">Questão 1 - Regulamentação</h5>
+            <p>
+              Segundo a Resolução CFM 1451/95, qual alternativa define
+              corretamente o conceito de EMERGÊNCIA?
+            </p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q1"
+                value="A"
+              />
+              <label class="form-check-label"
+                >Constatação médica de condições de agravo à saúde que impliquem
+                em risco iminente de vida ou sofrimento intenso, exigindo
+                tratamento médico imediato.</label
+              >
             </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q1"
+                value="B"
+              />
+              <label class="form-check-label"
+                >Constatação médica de condições de agravo à saúde que não
+                impliquem em risco iminente de vida, dispensando tratamento
+                imediato.</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q1"
+                value="C"
+              />
+              <label class="form-check-label"
+                >A ocorrência imprevista de agravo à saúde com ou sem risco
+                potencial de vida.</label
+              >
+            </div>
+            <div id="f1" class="feedback-box alert d-none mt-3"></div>
+          </div>
         </div>
 
-        <div class="exam-info alert alert-secondary bg-white shadow-sm border-0 rounded-3 mb-4 py-3">
-            <div class="row text-center g-2 small">
-                <div class="col-4 border-end"><strong>10 Questões</strong><br><span class="text-muted">Múltipla
-                        Escolha/ Dissertativa</span></div>
-                <div class="col-4 border-end"><strong>Nota de Corte</strong><br><span class="text-success">60% de
-                        Acerto</span></div>
-                <div class="col-4"><strong>Tempo Médio</strong><br><span class="text-muted">30 minutos</span></div>
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">Questão 2 - Gestão em Saúde</h5>
+            <p>
+              Na área de Urgência e Emergência, o impacto do atendimento pode
+              ser medido diretamente através de quais indicadores?
+            </p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q2"
+                value="A"
+              />
+              <label class="form-check-label"
+                >Pelo aumento do índice de Anos Potenciais de Vida Perdidos
+                (APVP).</label
+              >
             </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q2"
+                value="B"
+              />
+              <label class="form-check-label"
+                >Pelo aumento dos gastos realizados com internação hospitalar e
+                internação em UTI.</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q2"
+                value="C"
+              />
+              <label class="form-check-label"
+                >Exclusivamente por meio de informações publicadas em jornais e
+                revistas de grande circulação.</label
+              >
+            </div>
+            <div id="f2" class="feedback-box alert d-none mt-3"></div>
+          </div>
         </div>
 
-        <form id="quizForm" class="mb-4">
-
-            <!-- QUESTÃO 1 -->
-            <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-                <div class="card-body">
-                    <h5 class="fw-bold text-primary">Questão 1 - Tuberculose</h5>
-                    <p>
-                        Qual tipo de precaução deve ser utilizada em pacientes com Tuberculose Pulmonar Ativa?
-                    </p>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q1" value="A">
-                        <label class="form-check-label">Precaução por Contato</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q1" value="B">
-                        <label class="form-check-label">Precaução por Aerossóis</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q1" value="C">
-                        <label class="form-check-label">Precaução Padrão</label>
-                    </div>
-
-                    <div id="f1" class="feedback-box alert d-none mt-3"></div>
-                </div>
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">Questão 3 - Sinais Vitais</h5>
+            <p>
+              Vários fatores podem afetar o pulso (idade, estresse, drogas).
+              Assinale a alternativa que apresenta uma exceção aos locais
+              anatômicos usuais de verificação do pulso arterial:
+            </p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q3"
+                value="A"
+              />
+              <label class="form-check-label">Veia Safena</label>
             </div>
-
-            <!-- QUESTÃO 2 -->
-            <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-                <div class="card-body">
-                    <h5 class="fw-bold text-success">Questão 2 - Dissertativa</h5>
-
-                    <p>
-                        Explique a diferença entre negligência, imprudência e imperícia.
-                    </p>
-
-                    <textarea class="form-control" rows="4" name="q2"></textarea>
-
-                    <div id="f2" class="feedback-box alert d-none mt-3"></div>
-                </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q3"
+                value="B"
+              />
+              <label class="form-check-label">Artéria Radial</label>
             </div>
-
-            <!-- QUESTÃO 3 -->
-            <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-                <div class="card-body">
-                    <h5 class="fw-bold text-primary">Questão 3 - PGRSS</h5>
-
-                    <p>
-                        Em qual grupo são descartadas agulhas e materiais perfurocortantes?
-                    </p>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q3" value="A">
-                        <label class="form-check-label">Grupo A</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q3" value="B">
-                        <label class="form-check-label">Grupo D</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q3" value="C">
-                        <label class="form-check-label">Grupo E</label>
-                    </div>
-
-                    <div id="f3" class="feedback-box alert d-none mt-3"></div>
-                </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q3"
+                value="C"
+              />
+              <label class="form-check-label">Artéria Carotídea</label>
             </div>
+            <div id="f3" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
 
-            <!-- QUESTÃO 4 -->
-            <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-                <div class="card-body">
-                    <h5 class="fw-bold text-success">Questão 4 - Dissertativa</h5>
-
-                    <p>
-                        Cite os 5 momentos da higienização das mãos.
-                    </p>
-
-                    <textarea class="form-control" rows="4" name="q4"></textarea>
-
-                    <div id="f4" class="feedback-box alert d-none mt-3"></div>
-                </div>
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">Questão 4 - Sinais Vitais</h5>
+            <p>
+              Quais são os parâmetros biológicos compreendidos e classificados
+              classicamente como SINAIS VITAIS?
+            </p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q4"
+                value="A"
+              />
+              <label class="form-check-label"
+                >Consciência, Pulso (F.C) e Respiração.</label
+              >
             </div>
-
-            <!-- QUESTÃO 5 -->
-            <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-                <div class="card-body">
-                    <h5 class="fw-bold text-primary">Questão 5 - XABCDE</h5>
-
-                    <p>
-                        O que significa a letra X no protocolo XABCDE?
-                    </p>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q5" value="A">
-                        <label class="form-check-label">Exposição</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q5" value="B">
-                        <label class="form-check-label">Hemorragia Exsanguinante</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q5" value="C">
-                        <label class="form-check-label">Estado Neurológico</label>
-                    </div>
-
-                    <div id="f5" class="feedback-box alert d-none mt-3"></div>
-                </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q4"
+                value="B"
+              />
+              <label class="form-check-label"
+                >Temperatura, Pulso (F.C), Respiração e Pressão Arterial.</label
+              >
             </div>
-
-            <!-- QUESTÃO 6 -->
-            <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-                <div class="card-body">
-                    <h5 class="fw-bold text-success">Questão 6 - Dissertativa</h5>
-
-                    <p>
-                        Explique cada letra do protocolo XABCDE.
-                    </p>
-
-                    <textarea class="form-control" rows="5" name="q6"></textarea>
-
-                    <div id="f6" class="feedback-box alert d-none mt-3"></div>
-                </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q4"
+                value="C"
+              />
+              <label class="form-check-label"
+                >Frequência respiratória, Frequência cardíaca, Cianose e
+                avaliação das pupilas.</label
+              >
             </div>
+            <div id="f4" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
 
-            <!-- QUESTÃO 7 -->
-            <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-                <div class="card-body">
-                    <h5 class="fw-bold text-primary">Questão 7 - RCP</h5>
-
-                    <p>
-                        Qual a sequência correta da Ressuscitação Cardiopulmonar?
-                    </p>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q7" value="A">
-                        <label class="form-check-label">ABC</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q7" value="B">
-                        <label class="form-check-label">CAB</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q7" value="C">
-                        <label class="form-check-label">BAC</label>
-                    </div>
-
-                    <div id="f7" class="feedback-box alert d-none mt-3"></div>
-                </div>
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">Questão 5 - Sinais de Apoio</h5>
+            <p>
+              Os sinais de apoio são emitidos pelo corpo em função do estado de
+              funcionamento dos órgãos. Assinale a alternativa que cita
+              corretamente esses sinais:
+            </p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q5"
+                value="A"
+              />
+              <label class="form-check-label"
+                >Dilatação/reatividade das pupilas, cor/umidade da pele, estado
+                de consciência e motilidade/sensibilidade do corpo.</label
+              >
             </div>
-
-            <!-- QUESTÃO 8 -->
-            <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-                <div class="card-body">
-                    <h5 class="fw-bold text-success">Questão 8 - Dissertativa</h5>
-
-                    <p>
-                        Descreva a conduta diante de uma vítima com engasgo total.
-                    </p>
-
-                    <textarea class="form-control" rows="4" name="q8"></textarea>
-
-                    <div id="f8" class="feedback-box alert d-none mt-3"></div>
-                </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q5"
+                value="B"
+              />
+              <label class="form-check-label"
+                >Frequência cardíaca, Pressão arterial e presença de
+                cianose.</label
+              >
             </div>
-
-            <!-- QUESTÃO 9 -->
-            <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-                <div class="card-body">
-                    <h5 class="fw-bold text-primary">Questão 9 - Fisioterapia</h5>
-
-                    <p>
-                        O padrão respiratório de Kussmaul é caracterizado por:
-                    </p>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q9" value="A">
-                        <label class="form-check-label">Respiração profunda e acelerada</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q9" value="B">
-                        <label class="form-check-label">Respiração irregular com apneias</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q9" value="C">
-                        <label class="form-check-label">Respiração superficial</label>
-                    </div>
-
-                    <div id="f9" class="feedback-box alert d-none mt-3"></div>
-                </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q5"
+                value="C"
+              />
+              <label class="form-check-label"
+                >Temperatura corpórea e nível de dilatação pupilar
+                exclusivamente.</label
+              >
             </div>
+            <div id="f5" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
 
-            <!-- QUESTÃO 10 -->
-            <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-                <div class="card-body">
-                    <h5 class="fw-bold text-success">Questão 10 - Dissertativa</h5>
-
-                    <p>
-                        Explique o significado do protocolo P.R.I.C.E.
-                    </p>
-
-                    <textarea class="form-control" rows="4" name="q10"></textarea>
-
-                    <div id="f10" class="feedback-box alert d-none mt-3"></div>
-                </div>
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">
+              Questão 6 - Ritmos Respiratórios
+            </h5>
+            <p>
+              A respiração que se caracteriza por uma fase de apneia seguida de
+              incursões inspiratórias cada vez mais profundas até um máximo,
+              decrescendo até uma nova pausa, denomina-se:
+            </p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q6"
+                value="A"
+              />
+              <label class="form-check-label">Respiração de Kussmaul</label>
             </div>
-
-            <div class="d-grid gap-2 mt-4">
-                <button type="button" id="submitQuiz" class="btn btn-primary btn-lg">
-                    Corrigir Simulado
-                </button>
-
-                <button type="button" id="resetQuiz" class="btn btn-outline-secondary d-none">
-                    Refazer Teste
-                </button>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q6"
+                value="B"
+              />
+              <label class="form-check-label">Respiração de Biot</label>
             </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q6"
+                value="C"
+              />
+              <label class="form-check-label"
+                >Respiração de Cheyne-Stokes</label
+              >
+            </div>
+            <div id="f6" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
 
-        </form>
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">
+              Questão 7 - Lesões Musculoesqueléticas
+            </h5>
+            <p>
+              Qual alternativa define corretamente a lesão do tipo "Luxação"?
+            </p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q7"
+                value="A"
+              />
+              <label class="form-check-label"
+                >Deslocamento de um osso de sua posição normal na
+                articulação.</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q7"
+                value="B"
+              />
+              <label class="form-check-label"
+                >Lesão na qual os ligamentos sofrem distensão ou ruptura, sem
+                lesão no osso.</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q7"
+                value="C"
+              />
+              <label class="form-check-label"
+                >Estiramento muscular severo ao redor de uma estrutura
+                articular.</label
+              >
+            </div>
+            <div id="f7" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">Questão 8 - Termorregulação</h5>
+            <p>
+              Considerando os valores padrão de temperatura corporal axilar,
+              assinale a faixa que descreve corretamente o "Estado Febril":
+            </p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q8"
+                value="A"
+              />
+              <label class="form-check-label">36°C a 37°C</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q8"
+                value="B"
+              />
+              <label class="form-check-label">37°C a 38°C</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q8"
+                value="C"
+              />
+              <label class="form-check-label">38°C a 39°C</label>
+            </div>
+            <div id="f8" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">Questão 9 - Queimaduras</h5>
+            <p>
+              Qual grau de queimadura é caracterizado por acometer a epiderme e
+              porções variadas da derme, sendo denominado queimadura de
+              espessura parcial?
+            </p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q9"
+                value="A"
+              />
+              <label class="form-check-label">Primeiro Grau</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q9"
+                value="B"
+              />
+              <label class="form-check-label">Segundo Grau</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q9"
+                value="C"
+              />
+              <label class="form-check-label">Terceiro Grau</label>
+            </div>
+            <div id="f9" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">
+              Questão 10 - Parada Cardiorrespiratória
+            </h5>
+            <p>
+              Em consonância com as diretrizes de RCP, qual é o ritmo de
+              compressões por minuto preconizado para um atendimento em adulto?
+            </p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q10"
+                value="A"
+              />
+              <label class="form-check-label"
+                >60 a 80 compressões por minuto.</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q10"
+                value="B"
+              />
+              <label class="form-check-label"
+                >100 a 120 compressões por minuto.</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q10"
+                value="C"
+              />
+              <label class="form-check-label"
+                >Mais de 140 compressões por minuto.</label
+              >
+            </div>
+            <div id="f10" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">
+              Questão 11 - Patologia Respiratória
+            </h5>
+            <p>A Asma pode ser definida clinicamente como:</p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q11"
+                value="A"
+              />
+              <label class="form-check-label"
+                >Doença inflamatória crônica das vias aéreas caracterizada por
+                uma hiper-responsividade traqueobrônquica a estímulos diversos,
+                resultando em estreitamento difuso das vias aéreas.</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q11"
+                value="B"
+              />
+              <label class="form-check-label"
+                >Doença inflamatória aguda das vias aéreas que acarreta o
+                alargamento permanente das estruturas traqueobrônquicas.</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q11"
+                value="C"
+              />
+              <label class="form-check-label"
+                >Doença puramente infecciosa do sistema respiratório baixo,
+                gerando desconforto agudo.</label
+              >
+            </div>
+            <div id="f11" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">
+              Questão 12 - Saúde do Trabalhador
+            </h5>
+            <p>
+              De acordo com a FIOCRUZ (2017), ruídos, variações térmicas
+              (calor/frio), pressões anormais e radiações são classificados
+              como:
+            </p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q12"
+                value="A"
+              />
+              <label class="form-check-label">Riscos Químicos</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q12"
+                value="B"
+              />
+              <label class="form-check-label">Riscos Biológicos</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q12"
+                value="C"
+              />
+              <label class="form-check-label">Riscos Físicos</label>
+            </div>
+            <div id="f12" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">Questão 13 - Biossegurança</h5>
+            <p>
+              Sobre a higienização das mãos e controle de infecções, assinale a
+              afirmativa INCORRETA:
+            </p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q13"
+                value="A"
+              />
+              <label class="form-check-label"
+                >O uso de luvas de procedimento substitui a necessidade de
+                lavagem das mãos.</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q13"
+                value="B"
+              />
+              <label class="form-check-label"
+                >Higienizar as mãos com preparação alcoólica é um processo mais
+                rápido do que lavá-las com água e sabonete.</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q13"
+                value="C"
+              />
+              <label class="form-check-label"
+                >Máscaras do tipo N95 possuem indicações específicas de barreira
+                filtrante de aerossóis, e não apenas contra respingos.</label
+              >
+            </div>
+            <div id="f13" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">
+              Questão 14 - Primeiros Socorros
+            </h5>
+            <p>
+              Diante de uma suspeita clínica de fratura em membro apendicular,
+              qual deve ser a conduta imediata do socorrista?
+            </p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q14"
+                value="A"
+              />
+              <label class="form-check-label"
+                >Realizar tração manual para tentar colocar o osso no
+                alinhamento anatômico original.</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q14"
+                value="B"
+              />
+              <label class="form-check-label"
+                >Promover a imobilização do membro na posição em que se
+                encontra, englobando as duas articulações adjacentes.</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q14"
+                value="C"
+              />
+              <label class="form-check-label"
+                >Massagear vigorosamente o local para ativar a circulação
+                colateral.</label
+              >
+            </div>
+            <div id="f14" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">Questão 15 - Biossegurança</h5>
+            <p>
+              Qual o tipo de precaução biológica obrigatória que a equipe
+              assistencial deve adotar ao atender um paciente com suspeita ou
+              diagnóstico confirmado de Tuberculose Pulmonar Ativa?
+            </p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q15"
+                value="A"
+              />
+              <label class="form-check-label">Precaução por Gotículas</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q15"
+                value="B"
+              />
+              <label class="form-check-label"
+                >Precaução por Aerossóis (uso de máscara N95/PFF2)</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="q15"
+                value="C"
+              />
+              <label class="form-check-label"
+                >Precaução de Contato estrita</label
+              >
+            </div>
+            <div id="f15" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-success">Questão 16 - Dissertativa</h5>
+            <p>
+              O atendimento de primeiros socorros pode ser dividido em etapas
+              básicas sequenciais (Avaliação do local, Análise da cena, Chamada
+              de socorro, etc.). Cite e descreva detalhadamente a importância de
+              cada uma dessas fases operacionais.
+            </p>
+            <textarea
+              class="form-control"
+              rows="4"
+              name="q16"
+              placeholder="Digite sua resposta aqui..."
+            ></textarea>
+            <div id="f16" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-success">Questão 17 - Dissertativa</h5>
+            <p>
+              O choque circulatório é uma síndrome grave de hipoperfusão
+              tecidual sistêmica. Quais são as principais classificações dos
+              estados de choque (ex: Hipovolêmico, Cardiogênico, Obstrutivo,
+              Distributivo)? Diferencie suas causas básicas.
+            </p>
+            <textarea
+              class="form-control"
+              rows="4"
+              name="q17"
+              placeholder="Digite sua resposta aqui..."
+            ></textarea>
+            <div id="f17" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-success">Questão 18 - Dissertativa</h5>
+            <p>
+              Conceitue a Síndrome de Burnout no ambiente da área da saúde e
+              descreva os principais sintomas clínicos e organizacionais que
+              essa condição manifesta no profissional afetado.
+            </p>
+            <textarea
+              class="form-control"
+              rows="4"
+              name="q18"
+              placeholder="Digite sua resposta aqui..."
+            ></textarea>
+            <div id="f18" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+          <div class="card-body">
+            <h5 class="fw-bold text-success">Questão 19 - Dissertativa</h5>
+            <p>
+              Defina o conceito clínico de desmaio (síncope) e descreva ao menos
+              três fatores fisiológicos ou ambientais comuns que podem
+              contribuir diretamente para o desencadeamento dessa perda
+              temporária de consciência.
+            </p>
+            <textarea
+              class="form-control"
+              rows="4"
+              name="q19"
+              placeholder="Digite sua resposta aqui..."
+            ></textarea>
+            <div id="f19" class="feedback-box alert d-none mt-3"></div>
+          </div>
+        </div>
+
+        <div class="d-grid gap-2 mt-4">
+          <button type="button" id="submitQuiz" class="btn btn-primary btn-lg">
+            Corrigir Simulado
+          </button>
+          <button
+            type="button"
+            id="resetQuiz"
+            class="btn btn-outline-secondary d-none"
+          >
+            Refazer Teste
+          </button>
+        </div>
+      </form>
     </section>
 
     <section id="resultsSection" class="container my-5 d-none">
-        <div class="result-card card border-0 bg-white shadow rounded-4 text-center p-4">
-            <div class="card-body">
-                <h2 class="fw-bold h4 text-dark mb-3">Painel de Rendimento Acadêmico</h2>
-                <div id="scoreDisplay" class="display-3 fw-bold text-success mb-2">0%</div>
-                <p id="scoreFeedback" class="text-secondary small mb-0"></p>
-            </div>
+      <div
+        class="result-card card border-0 bg-white shadow rounded-4 text-center p-4"
+      >
+        <div class="card-body">
+          <h2 class="fw-bold h4 text-dark mb-3">
+            Painel de Rendimento Acadêmico
+          </h2>
+          <div id="scoreDisplay" class="display-3 fw-bold text-success mb-2">
+            0%
+          </div>
+          <p id="scoreFeedback" class="text-secondary small mb-0"></p>
         </div>
+      </div>
     </section>
 
-    <footer class="bg-dark text-white text-center py-4 mt-5 border-top border-secondary">
-        <div class="container">
-            <p class="mb-1 fw-bold">FisioPrep</p>
-            <p class="x-small opacity-50 mb-0">Plataforma de Revisão Acadêmica Integrada • 2026</p>
-        </div>
+    <footer
+      class="bg-dark text-white text-center py-4 mt-5 border-top border-secondary"
+    >
+      <div class="container">
+        <p class="mb-1 fw-bold">FisioPrep</p>
+        <p class="x-small opacity-50 mb-0">
+          Plataforma de Revisão Acadêmica Integrada • 2026
+        </p>
+      </div>
     </footer>
 
-    <button id="backToTop" class="btn btn-primary position-fixed rounded-circle shadow"
-        style="bottom: 25px; right: 25px; width: 45px; height: 45px; z-index: 1030; display: none;">
-        ↑
+    <button
+      id="backToTop"
+      class="btn btn-primary position-fixed rounded-circle shadow"
+      style="
+        bottom: 25px;
+        right: 25px;
+        width: 45px;
+        height: 45px;
+        z-index: 1030;
+        display: none;
+      "
+    >
+      ↑
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
-
-</body>
-
+  </body>
 </html>
