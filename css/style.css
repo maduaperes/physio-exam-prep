@@ -27,7 +27,7 @@ html {
 
   --border: #e5e7eb;
 
-  --shadow: 0 10px 25px rgba(0, 0, 0, 0.06); /* Sombra suavizada para melhor desempenho */
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 
   --radius: 20px;
 }
@@ -48,7 +48,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: Inter, sans-serif;
-  /* Removido o 'transition: .3s' genérico do body que travava a rolagem */
+  /* Apenas as props que realmente precisam de transição */
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
@@ -59,20 +59,18 @@ body {
 
 /* ========================================
    HEADER
+   – backdrop-filter removido: dispara
+     composite layers em toda rolagem
 ======================================== */
 
 .app-header {
-  background: rgba(255, 255, 255, 0.9); /* Opacidade sutilmente aumentada */
-  backdrop-filter: blur(
-    8px
-  ); /* Reduzido de 12px para 8px (filtro de blur consome muita GPU no mobile) */
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.97);
   border-bottom: 1px solid var(--border);
   z-index: 1000;
 }
 
 body.dark .app-header {
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(15, 23, 42, 0.97);
 }
 
 .header-content {
@@ -102,15 +100,19 @@ body.dark .app-header {
   background: var(--card);
   box-shadow: var(--shadow);
   cursor: pointer;
-  transition: transform 0.2s ease;
+  /* Só escala — não dispara layout nem paint */
+  transition: transform 0.15s ease;
+  will-change: transform;
 }
 
 #themeToggle:active {
-  transform: scale(0.95);
+  transform: scale(0.93);
 }
 
 /* ========================================
    PROGRESS BAR
+   – width é animada; GPU não ajuda aqui,
+     mas a transição linear curta evita jank
 ======================================== */
 
 .progress-wrapper {
@@ -126,8 +128,7 @@ body.dark .app-header {
 .progress-bar {
   width: 0%;
   background: linear-gradient(90deg, #2563eb, #60a5fa);
-  /* Transição suave na barra de carregamento */
-  transition: width 0.1s linear;
+  transition: width 0.08s linear;
 }
 
 /* ========================================
@@ -143,7 +144,7 @@ body.dark .app-header {
   color: white;
   padding: 30px 24px;
   border-radius: 28px;
-  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.18);
 }
 
 .hero-card h2 {
@@ -163,7 +164,8 @@ body.dark .app-header {
 }
 
 /* ========================================
-   MENU
+   MENU NAV CARDS
+   – só translateY: não dispara paint
 ======================================== */
 
 .study-nav {
@@ -181,8 +183,7 @@ body.dark .app-header {
   color: var(--text);
   font-weight: 600;
   box-shadow: var(--shadow);
-  /* Otimizado transformações CSS de movimento */
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.2s ease;
   will-change: transform;
 }
 
@@ -224,7 +225,8 @@ body.dark .app-header {
 }
 
 /* ========================================
-   ACCORDION (Explicações e Botões de Informações)
+   ACCORDION
+   – contain: layout+style isola reflows
 ======================================== */
 
 .accordion-item {
@@ -233,16 +235,16 @@ body.dark .app-header {
   border-radius: 18px !important;
   overflow: hidden;
   box-shadow: var(--shadow);
-  /* Isola o layout interno para não arrastar elementos externos ao abrir */
-  contain: content;
+  contain: layout style;
 }
 
 .accordion-button {
   font-weight: 600;
   padding: 18px;
+  /* Só cor de fundo e texto — ambas baratas */
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
+    background-color 0.18s ease,
+    color 0.18s ease;
 }
 
 .accordion-button:not(.collapsed) {
@@ -261,6 +263,8 @@ body.dark .accordion-button:not(.collapsed) {
 
 /* ========================================
    FLASHCARDS
+   – promote cada card para compositor
+     via translateZ(0); evita jank no flip
 ======================================== */
 
 .flashcards-grid {
@@ -277,12 +281,13 @@ body.dark .accordion-button:not(.collapsed) {
   position: relative;
   width: 100%;
   height: 200px;
-  /* Transições 3D aceleradas nativamente */
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   cursor: pointer;
   will-change: transform;
+  /* Sobe para camada própria logo de cara */
+  transform: translateZ(0);
 }
 
 .flashcard.flipped .flashcard-inner {
@@ -301,7 +306,7 @@ body.dark .accordion-button:not(.collapsed) {
   padding: 20px;
   border-radius: 24px;
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden; /* Correção para Safari Mobile/iOS não engasgar */
+  -webkit-backface-visibility: hidden;
   box-shadow: var(--shadow);
 }
 
@@ -316,7 +321,7 @@ body.dark .accordion-button:not(.collapsed) {
 }
 
 /* ========================================
-   QUIZ
+   QUIZ / QUESTION CARDS
 ======================================== */
 
 #quizContainer {
@@ -330,6 +335,7 @@ body.dark .accordion-button:not(.collapsed) {
   padding: 20px;
   border-radius: 24px;
   box-shadow: var(--shadow);
+  contain: layout style;
 }
 
 .question-card h5 {
@@ -342,9 +348,9 @@ body.dark .accordion-button:not(.collapsed) {
   margin-bottom: 10px;
   border-radius: 12px;
   cursor: pointer;
-  transition:
-    background-color 0.15s ease,
-    transform 0.1s ease;
+  /* Só escala — GPU-friendly */
+  transition: transform 0.1s ease;
+  will-change: transform;
 }
 
 .option:active {
@@ -356,7 +362,7 @@ body.dark .option {
 }
 
 /* ========================================
-   EXAM
+   EXAM INFO
 ======================================== */
 
 .exam-info {
@@ -376,7 +382,7 @@ body.dark .option {
 }
 
 /* ========================================
-   RESULTADOS / FEEDBACK BOXES
+   RESULTADOS
 ======================================== */
 
 .result-card {
@@ -393,20 +399,33 @@ body.dark .option {
   font-weight: 800;
 }
 
-/* Caixa de respostas e feedbacks injetadas via JS */
+/* Fade-in usando opacity+transform:
+   ambas rodam no compositor sem layout */
 .feedback-box {
-  contain: content;
-  animation: fadeInPerformant 0.3s ease forwards;
+  contain: layout style;
+  animation: fadeIn 0.25s ease forwards;
 }
 
-@keyframes fadeInPerformant {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(4px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ========================================
+   PREFERÊNCIA DO USUÁRIO: sem animação
+======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -441,8 +460,8 @@ footer {
   z-index: 999;
   cursor: pointer;
   transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
+    transform 0.15s ease,
+    opacity 0.15s ease;
   will-change: transform, opacity;
 }
 
@@ -472,7 +491,7 @@ footer {
   text-decoration: none;
   color: var(--text-light);
   font-size: 0.8rem;
-  transition: color 0.2s ease;
+  transition: color 0.15s ease;
 }
 
 .mobile-bottom-nav a.active {

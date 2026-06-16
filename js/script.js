@@ -17,41 +17,51 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ======================================
-        BARRA DE PROGRESSO
+        BARRA DE PROGRESSO + BOTÃO TOPO
+        – Um único listener de scroll,
+          passive:true para não bloquear o
+          thread de composição do browser.
+          rAF evita calcular mais de 1x por
+          frame mesmo com scroll rápido.
     ====================================== */
   const progressBar = document.getElementById("readingProgress");
+  const backToTop = document.getElementById("backToTop");
 
-  if (progressBar) {
-    window.addEventListener("scroll", () => {
+  let ticking = false;
+
+  function onScroll() {
+    if (ticking) return;
+
+    ticking = true;
+    requestAnimationFrame(() => {
       const scrollTop = document.documentElement.scrollTop;
       const scrollHeight =
         document.documentElement.scrollHeight -
         document.documentElement.clientHeight;
-      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
 
-      progressBar.style.width = `${progress}%`;
+      // Progress bar
+      if (progressBar) {
+        const progress =
+          scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        progressBar.style.width = `${progress}%`;
+      }
+
+      // Botão voltar ao topo
+      if (backToTop) {
+        backToTop.style.display = scrollTop > 500 ? "block" : "none";
+      }
+
+      ticking = false;
     });
   }
 
-  /* ======================================
-        BOTÃO VOLTAR AO TOPO
-    ====================================== */
-  const backToTop = document.getElementById("backToTop");
+  // passive: true — o browser sabe que não vamos chamar preventDefault()
+  // e pode rolar sem esperar o JS terminar
+  window.addEventListener("scroll", onScroll, { passive: true });
 
   if (backToTop) {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 500) {
-        backToTop.style.display = "block";
-      } else {
-        backToTop.style.display = "none";
-      }
-    });
-
     backToTop.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
@@ -83,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     q15: "B",
   };
 
-  /* RESPOSTAS BEM CURTAS E RESUMIDAS - DISSERTATIVAS (16 a 19) */
+  /* RESPOSTAS DISSERTATIVAS (16 a 19) */
   const essayAnswers = {
     q16: `
         1. Olhar o local: Ver se a cena está segura para você agir.
@@ -108,9 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (submitQuiz) {
     submitQuiz.addEventListener("click", () => {
       let score = 0;
-      let totalObjective = Object.keys(answers).length;
+      const totalObjective = Object.keys(answers).length;
 
-      /* CORREÇÃO DAS OBJETIVAS */
+      // Usa fragment para agrupar operações de DOM
       Object.keys(answers).forEach((question) => {
         const selected = document.querySelector(
           `input[name="${question}"]:checked`,
@@ -139,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      /* MOSTRAR GABARITO DAS DISSERTATIVAS */
+      /* Dissertativas */
       Object.keys(essayAnswers).forEach((question) => {
         const textarea = document.querySelector(`textarea[name="${question}"]`);
         const feedback = document.getElementById(
@@ -150,17 +160,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         feedback.classList.remove("d-none");
         feedback.className = "feedback-box alert alert-info mt-3";
-
         feedback.innerHTML = `
-                    <strong>Sua resposta:</strong>
-                    <p class="mb-2 text-secondary" style="white-space: pre-wrap;">${textarea.value.trim() || "Você deixou em branco."}</p>
-                    <hr class="my-2">
-                    <strong>Resposta correta esperada (resumo):</strong>
-                    <p class="mb-0 text-dark" style="white-space: pre-wrap;">${essayAnswers[question].trim()}</p>
-                `;
+          <strong>Sua resposta:</strong>
+          <p class="mb-2 text-secondary" style="white-space: pre-wrap;">${
+            textarea.value.trim() || "Você deixou em branco."
+          }</p>
+          <hr class="my-2">
+          <strong>Resposta correta esperada (resumo):</strong>
+          <p class="mb-0 text-dark" style="white-space: pre-wrap;">${essayAnswers[question].trim()}</p>
+        `;
       });
 
-      /* EXIBIÇÃO DO DESEMPENHO NO TOPO / SESSÃO DE RESULTADOS */
+      /* Resultado */
       const percentage = Math.round((score / totalObjective) * 100);
 
       if (scoreDisplay) scoreDisplay.textContent = `${percentage}%`;
@@ -181,7 +192,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (resultsSection) resultsSection.classList.remove("d-none");
       if (resetQuiz) resetQuiz.classList.remove("d-none");
 
-      // Rolagem suave até os resultados
       if (resultsSection) {
         resultsSection.scrollIntoView({ behavior: "smooth" });
       } else {
@@ -191,39 +201,31 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ======================================
-        REFAZER TESTE (LIMPAR TUDO)
+        REFAZER TESTE
     ====================================== */
   if (resetQuiz) {
     resetQuiz.addEventListener("click", () => {
-      // Limpa as bolinhas de seleção (radio)
       document
         .querySelectorAll('#quizForm input[type="radio"]')
         .forEach((input) => {
           input.checked = false;
         });
 
-      // Limpa o que foi digitado nas caixas de texto
       document.querySelectorAll("#quizForm textarea").forEach((textarea) => {
         textarea.value = "";
       });
 
-      // Esconde todos os alertas de correção
       document.querySelectorAll("#quizForm .feedback-box").forEach((box) => {
         box.className = "feedback-box alert d-none mt-3";
         box.innerHTML = "";
       });
 
-      // Esconde o painel de notas do topo
       if (resultsSection) resultsSection.classList.add("d-none");
       resetQuiz.classList.add("d-none");
 
-      // Sobe a tela de volta para o começo das perguntas
       const quizForm = document.getElementById("quizForm");
       if (quizForm) {
-        window.scrollTo({
-          top: quizForm.offsetTop - 40,
-          behavior: "smooth",
-        });
+        window.scrollTo({ top: quizForm.offsetTop - 40, behavior: "smooth" });
       } else {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
