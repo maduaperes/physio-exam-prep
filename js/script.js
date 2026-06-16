@@ -1,5 +1,48 @@
 document.addEventListener("DOMContentLoaded", () => {
   /* ======================================
+        ACCORDION CUSTOM
+        Bypassa o Bootstrap completamente.
+        Anima so opacity — roda no compositor
+        do Safari/iPhone sem reflow de height.
+    ====================================== */
+  document.querySelectorAll("[data-bs-toggle='collapse']").forEach((btn) => {
+    btn.addEventListener(
+      "click",
+      (e) => {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        const targetId = btn.getAttribute("data-bs-target");
+        const target = document.querySelector(targetId);
+        if (!target) return;
+
+        const parentId = target.getAttribute("data-bs-parent");
+        const isOpen = target.classList.contains("acc-open");
+
+        // Fecha irmaos do mesmo grupo
+        if (parentId) {
+          document
+            .querySelectorAll(parentId + " .accordion-collapse")
+            .forEach((el) => {
+              el.classList.remove("acc-open", "show");
+              const sibBtn = el
+                .closest(".accordion-item")
+                ?.querySelector(".accordion-button");
+              if (sibBtn) sibBtn.classList.add("collapsed");
+            });
+        }
+
+        // Abre o alvo (se estava fechado)
+        if (!isOpen) {
+          target.classList.add("acc-open", "show");
+          btn.classList.remove("collapsed");
+        }
+      },
+      true,
+    ); // capture: intercepta antes do Bootstrap
+  });
+
+  /* ======================================
         FLASHCARDS
     ====================================== */
   const flashcards = document.querySelectorAll(".flashcard");
@@ -17,12 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ======================================
-        BARRA DE PROGRESSO + BOTÃO TOPO
-        – Um único listener de scroll,
-          passive:true para não bloquear o
-          thread de composição do browser.
-          rAF evita calcular mais de 1x por
-          frame mesmo com scroll rápido.
+        BARRA DE PROGRESSO + BOTAO TOPO
     ====================================== */
   const progressBar = document.getElementById("readingProgress");
   const backToTop = document.getElementById("backToTop");
@@ -31,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function onScroll() {
     if (ticking) return;
-
     ticking = true;
     requestAnimationFrame(() => {
       const scrollTop = document.documentElement.scrollTop;
@@ -39,14 +76,12 @@ document.addEventListener("DOMContentLoaded", () => {
         document.documentElement.scrollHeight -
         document.documentElement.clientHeight;
 
-      // Progress bar
       if (progressBar) {
         const progress =
           scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-        progressBar.style.width = `${progress}%`;
+        progressBar.style.width = progress + "%";
       }
 
-      // Botão voltar ao topo
       if (backToTop) {
         backToTop.style.display = scrollTop > 500 ? "block" : "none";
       }
@@ -55,8 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // passive: true — o browser sabe que não vamos chamar preventDefault()
-  // e pode rolar sem esperar o JS terminar
   window.addEventListener("scroll", onScroll, { passive: true });
 
   if (backToTop) {
@@ -66,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ======================================
-        SIMULADO (19 QUESTÕES)
+        SIMULADO (19 QUESTOES)
     ====================================== */
   const submitQuiz = document.getElementById("submitQuiz");
   const resetQuiz = document.getElementById("resetQuiz");
@@ -74,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const scoreDisplay = document.getElementById("scoreDisplay");
   const scoreFeedback = document.getElementById("scoreFeedback");
 
-  /* GABARITO OFICIAL - QUESTÕES OBJETIVAS (1 a 15) */
+  /* GABARITO OFICIAL - QUESTOES OBJETIVAS (1 a 15) */
   const answers = {
     q1: "B",
     q2: "B",
@@ -96,22 +129,22 @@ document.addEventListener("DOMContentLoaded", () => {
   /* RESPOSTAS DISSERTATIVAS (16 a 19) */
   const essayAnswers = {
     q16: `
-        1. Olhar o local: Ver se a cena está segura para você agir.
-        2. Chamar ajuda: Ligar rápido para o SAMU (192) ou Bombeiros (193).
-        3. Primeira avaliação: Checar se a vítima responde, respira e tem pulso (XABCDE).
-        4. Segunda avaliação: Procurar outros machucados menores e saber o que houve.
+        1. Olhar o local: Ver se a cena est\u00e1 segura para voc\u00ea agir.
+        2. Chamar ajuda: Ligar r\u00e1pido para o SAMU (192) ou Bombeiros (193).
+        3. Primeira avalia\u00e7\u00e3o: Checar se a v\u00edtima responde, respira e tem pulso (XABCDE).
+        4. Segunda avalia\u00e7\u00e3o: Procurar outros machucados menores e saber o que houve.
         `,
     q17: `
-        - Hipovolêmico: Perda de muito sangue ou líquidos (hemorragia).
-        - Cardiogênico: O coração falha e não consegue bombear o sangue.
-        - Obstrutivo: Algo entope ou bloqueia a passagem do sangue (ex: coágulo).
-        - Distributivo: As veias relaxam demais e o sangue não circula (alergia ou infecção grave).
+        - Hipovol\u00eamico: Perda de muito sangue ou l\u00edquidos (hemorragia).
+        - Cardiog\u00eanico: O cora\u00e7\u00e3o falha e n\u00e3o consegue bombear o sangue.
+        - Obstrutivo: Algo entope ou bloqueia a passagem do sangue (ex: co\u00e1gulo).
+        - Distributivo: As veias relaxam demais e o sangue n\u00e3o circula (alergia ou infec\u00e7\u00e3o grave).
         `,
     q18: `
-        É o esgotamento físico e mental completo causado por excesso de estresse e cansaço no trabalho ou estudos. Sintomas: falta de forças, irritação, desânimo e queda no rendimento.
+        \u00c9 o esgotamento f\u00edsico e mental completo causado por excesso de estresse e cansa\u00e7o no trabalho ou estudos. Sintomas: falta de for\u00e7as, irrita\u00e7\u00e3o, des\u00e2nimo e queda no rendimento.
         `,
     q19: `
-        É a perda rápida da consciência porque faltou sangue e oxigênio no cérebro. Principais causas: ficar sem comer (hipoglicemia), fortes emoções/sustos, calor excessivo ou muito tempo de pé.
+        \u00c9 a perda r\u00e1pida da consci\u00eancia porque faltou sangue e oxig\u00eanio no c\u00e9rebro. Principais causas: ficar sem comer (hipoglicemia), fortes emo\u00e7\u00f5es/sustos, calor excessivo ou muito tempo de p\u00e9.
         `,
   };
 
@@ -120,13 +153,12 @@ document.addEventListener("DOMContentLoaded", () => {
       let score = 0;
       const totalObjective = Object.keys(answers).length;
 
-      // Usa fragment para agrupar operações de DOM
       Object.keys(answers).forEach((question) => {
         const selected = document.querySelector(
-          `input[name="${question}"]:checked`,
+          'input[name="' + question + '"]:checked',
         );
         const feedback = document.getElementById(
-          `f${question.replace("q", "")}`,
+          "f" + question.replace("q", ""),
         );
 
         if (!feedback) return;
@@ -135,57 +167,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!selected) {
           feedback.className = "feedback-box alert alert-warning mt-3";
-          feedback.innerHTML = "Você não escolheu nenhuma resposta.";
+          feedback.innerHTML = "Voc\u00ea n\u00e3o escolheu nenhuma resposta.";
           return;
         }
 
         if (selected.value === answers[question]) {
           score++;
           feedback.className = "feedback-box alert alert-success mt-3";
-          feedback.innerHTML = "<strong>Parabéns!</strong> Você acertou.";
+          feedback.innerHTML =
+            "<strong>Parab\u00e9ns!</strong> Voc\u00ea acertou.";
         } else {
           feedback.className = "feedback-box alert alert-danger mt-3";
-          feedback.innerHTML = `<strong>Ah, você errou.</strong> A resposta certa é a letra <strong>${answers[question]}</strong>.`;
+          feedback.innerHTML =
+            "<strong>Ah, voc\u00ea errou.</strong> A resposta certa \u00e9 a letra <strong>" +
+            answers[question] +
+            "</strong>.";
         }
       });
 
       /* Dissertativas */
       Object.keys(essayAnswers).forEach((question) => {
-        const textarea = document.querySelector(`textarea[name="${question}"]`);
+        const textarea = document.querySelector(
+          'textarea[name="' + question + '"]',
+        );
         const feedback = document.getElementById(
-          `f${question.replace("q", "")}`,
+          "f" + question.replace("q", ""),
         );
 
         if (!feedback || !textarea) return;
 
         feedback.classList.remove("d-none");
         feedback.className = "feedback-box alert alert-info mt-3";
-        feedback.innerHTML = `
-          <strong>Sua resposta:</strong>
-          <p class="mb-2 text-secondary" style="white-space: pre-wrap;">${
-            textarea.value.trim() || "Você deixou em branco."
-          }</p>
-          <hr class="my-2">
-          <strong>Resposta correta esperada (resumo):</strong>
-          <p class="mb-0 text-dark" style="white-space: pre-wrap;">${essayAnswers[question].trim()}</p>
-        `;
+        feedback.innerHTML =
+          "<strong>Sua resposta:</strong>" +
+          '<p class="mb-2 text-secondary" style="white-space: pre-wrap;">' +
+          (textarea.value.trim() || "Voc\u00ea deixou em branco.") +
+          '</p><hr class="my-2">' +
+          "<strong>Resposta correta esperada (resumo):</strong>" +
+          '<p class="mb-0 text-dark" style="white-space: pre-wrap;">' +
+          essayAnswers[question].trim() +
+          "</p>";
       });
 
       /* Resultado */
       const percentage = Math.round((score / totalObjective) * 100);
 
-      if (scoreDisplay) scoreDisplay.textContent = `${percentage}%`;
+      if (scoreDisplay) scoreDisplay.textContent = percentage + "%";
 
       if (scoreFeedback) {
         if (percentage >= 80) {
           scoreFeedback.textContent =
-            "Muito bem! Você conhece ótimo o assunto.";
+            "Muito bem! Voc\u00ea conhece \u00f3timo o assunto.";
         } else if (percentage >= 60) {
           scoreFeedback.textContent =
-            "Bom trabalho! Dê uma olhadinha nas que errou para aprender ainda mais.";
+            "Bom trabalho! D\u00ea uma olhadinha nas que errou para aprender ainda mais.";
         } else {
           scoreFeedback.textContent =
-            "Vale a pena dar mais uma estudada nos tópicos de Biossegurança e Sinais Vitais.";
+            "Vale a pena dar mais uma estudada nos t\u00f3picos de Biosseguran\u00e7a e Sinais Vitais.";
         }
       }
 
