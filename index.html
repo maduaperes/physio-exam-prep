@@ -1,1589 +1,1161 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FisioPrep - Revisão para Prova</title>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FisioPrep - História da Fisioterapia</title>
 
-  <body class="bg-light text-dark">
-    <div id="loader" class="d-none"></div>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
 
-    <header class="app-header fixed-top bg-white border-bottom shadow-sm py-2">
-      <div class="container d-flex justify-content-between align-items-center">
-        <div>
-          <h1 class="h4 mb-0 fw-bold text-primary">
-            <i class="bi bi-heart-pulse-fill me-2"></i>FisioPrep
-          </h1>
-          <p class="small text-muted mb-0">Revisão Acadêmica</p>
-        </div>
+<body class="bg-light text-dark">
+  <div id="loader" class="d-none"></div>
+
+  <header class="app-header fixed-top bg-white border-bottom shadow-sm py-2">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div>
+        <h1 class="h4 mb-0 fw-bold text-primary">
+          <i class="bi bi-heart-pulse-fill me-2"></i>FisioPrep
+        </h1>
+        <p class="small text-muted mb-0">Revisão Acadêmica</p>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <section
-      class="progress-wrapper position-fixed w-100"
-      style="top: 62px; z-index: 1020"
-    >
-      <div class="progress rounded-0" style="height: 6px">
-        <div
-          id="readingProgress"
-          class="progress-bar bg-success"
-          role="progressbar"
-          style="width: 0%"
-        ></div>
-      </div>
-    </section>
+  <section class="progress-wrapper position-fixed w-100" style="top: 62px; z-index: 1020">
+    <div class="progress rounded-0" style="height: 6px">
+      <div id="readingProgress" class="progress-bar bg-success" role="progressbar" style="width: 0%"></div>
+    </div>
+  </section>
 
-    <section class="hero-section container" style="margin-top: 100px">
-      <div
-        class="hero-card card border-0 bg-primary text-white p-4 shadow-sm text-center text-sm-start rounded-4"
-      >
-        <div class="card-body">
-          <span class="badge bg-white text-primary mb-3 fw-bold">
-            Preparação para Avaliação
-          </span>
-          <h2 class="fw-bold mb-3">
-            Biossegurança, Gestão de Riscos e Primeiros Socorros
-          </h2>
-          <p class="opacity-90 mb-4">
-            Tudo o que você precisa para revisar antes da prova. Aqui você
-            encontra resumos simples, flashcards para memorizar mais rápido e um
-            simulado para testar seus conhecimentos.
-          </p>
-          <a
-            href="#biosseguranca"
-            class="btn btn-light text-primary fw-bold px-4 py-2 shadow-sm"
-          >
-            Começar Estudo <i class="bi bi-arrow-right ms-1"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <nav class="study-nav container my-4">
-      <div class="row g-2">
-        <div class="col-6">
-          <a
-            href="#biosseguranca"
-            class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark"
-          >
-            <div class="card-body p-2">
-              <i class="bi bi-shield-check text-danger h2 d-block mb-1"></i>
-              <span class="fw-bold small">Biossegurança</span>
-            </div>
-          </a>
-        </div>
-        <div class="col-6">
-          <a
-            href="#primeiros-socorros"
-            class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark"
-          >
-            <div class="card-body p-2">
-              <i class="bi bi-crosshair text-success h2 d-block mb-1"></i>
-              <span class="fw-bold small">P. Socorros</span>
-            </div>
-          </a>
-        </div>
-        <div class="col-6">
-          <a
-            href="#flashcards"
-            class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark"
-          >
-            <div class="card-body p-2">
-              <i class="bi bi-card-text text-warning h2 d-block mb-1"></i>
-              <span class="fw-bold small">Flashcards</span>
-            </div>
-          </a>
-        </div>
-        <div class="col-6">
-          <a
-            href="#quiz"
-            class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark"
-          >
-            <div class="card-body p-2">
-              <i class="bi bi-lightbulb text-info h2 d-block mb-1"></i>
-              <span class="fw-bold small">Simulado</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </nav>
-
-    <section id="biosseguranca" class="content-section container my-5 pt-4">
-      <div class="section-header text-center mb-4">
-        <h2
-          class="fw-bold border-bottom border-danger border-3 d-inline-block pb-2"
-        >
-          1. Biossegurança e Legislação
+  <section class="hero-section container" style="margin-top: 100px">
+    <div class="hero-card card border-0 bg-primary text-white p-4 shadow-sm text-center text-sm-start rounded-4">
+      <div class="card-body">
+        <span class="badge bg-white text-primary mb-3 fw-bold">
+          Preparação para Avaliação
+        </span>
+        <h2 class="fw-bold mb-3">
+          História e Fundamentos da Fisioterapia
         </h2>
-        <p class="text-muted small">
-          Aprenda como evitar acidentes, prevenir infecções e trabalhar com
-          segurança durante os atendimentos.
+        <p class="opacity-90 mb-4">
+          Tudo o que você precisa para revisar antes da prova. Aqui você
+          encontra resumos da história da profissão e fundamentos essenciais,
+          flashcards para memorizar mais rápido e um simulado completo de NP1 e NP2.
         </p>
+        <a href="#historia" class="btn btn-light text-primary fw-bold px-4 py-2 shadow-sm">
+          Começar Estudo <i class="bi bi-arrow-right ms-1"></i>
+        </a>
       </div>
+    </div>
+  </section>
 
-      <div class="text-center mb-4">
-        <img
-          src="img/biosseguranca.png"
-          alt="Biossegurança e Legislação"
-          class="section-image img-fluid rounded-3 shadow-sm"
-          style="
-            max-height: 180px;
-            width: 100%;
-            object-fit: cover;
-            object-position: 50% 85%;
-          "
-        />
+  <nav class="study-nav container my-4">
+    <div class="row g-2">
+      <div class="col-6">
+        <a href="#historia"
+          class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark">
+          <div class="card-body p-2">
+            <i class="bi bi-hourglass-split text-danger h2 d-block mb-1"></i>
+            <span class="fw-bold small">História</span>
+          </div>
+        </a>
       </div>
-
-      <div class="accordion shadow-sm" id="biosAccordion">
-        <div
-          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
-        >
-          <h2 class="accordion-header">
-            <button
-              class="accordion-button fw-bold bg-white text-dark"
-              data-bs-toggle="collapse"
-              data-bs-target="#riscos"
-            >
-              <i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>
-              Classificação dos Riscos Ambientais (NR-9)
-            </button>
-          </h2>
-          <div
-            id="riscos"
-            class="accordion-collapse collapse show"
-            data-bs-parent="#biosAccordion"
-          >
-            <div class="accordion-body bg-white small text-secondary">
-              <ul class="list-group list-group-flush">
-                <p>
-                  No ambiente de saúde existem vários tipos de riscos que podem
-                  afetar profissionais e pacientes.
-                </p>
-
-                <p>
-                  <strong>Riscos físicos:</strong> ruído, calor, frio, radiação
-                  e vibrações.
-                </p>
-
-                <p>
-                  <strong>Riscos químicos:</strong> medicamentos, produtos de
-                  limpeza e outras substâncias químicas.
-                </p>
-
-                <p>
-                  <strong>Riscos biológicos:</strong> vírus, bactérias, fungos e
-                  outros microrganismos.
-                </p>
-
-                <p>
-                  <strong>Riscos ergonômicos:</strong> postura inadequada,
-                  movimentos repetitivos e excesso de esforço físico.
-                </p>
-
-                <p>
-                  <strong>Riscos de acidentes:</strong> quedas, choques
-                  elétricos, cortes e perfurações.
-                </p>
-              </ul>
-            </div>
+      <div class="col-6">
+        <a href="#especialidades"
+          class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark">
+          <div class="card-body p-2">
+            <i class="bi bi-award-fill text-success h2 d-block mb-1"></i>
+            <span class="fw-bold small">Especialidades</span>
           </div>
-        </div>
-
-        <div
-          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
-        >
-          <h2 class="accordion-header">
-            <button
-              class="accordion-button collapsed fw-bold bg-white text-dark"
-              data-bs-toggle="collapse"
-              data-bs-target="#higiene"
-            >
-              <i class="bi bi-hand-thumbs-up-fill text-primary me-2"></i>
-              Higienização das Mãos (Os 5 Momentos)
-            </button>
-          </h2>
-          <div
-            id="higiene"
-            class="accordion-collapse collapse"
-            data-bs-parent="#biosAccordion"
-          >
-            <div class="accordion-body bg-white small text-secondary">
-              <p>
-                Lavar ou higienizar as mãos continua sendo a forma mais simples
-                e eficiente de evitar infecções.
-              </p>
-
-              <p><strong>Os 5 momentos mais importantes são:</strong></p>
-
-              <ul>
-                <li>Antes de tocar o paciente.</li>
-                <li>Antes de realizar qualquer procedimento.</li>
-                <li>Após contato com sangue ou secreções.</li>
-                <li>Após tocar o paciente.</li>
-                <li>Após tocar objetos próximos ao paciente.</li>
-              </ul>
-
-              <p>
-                Se cair na prova perguntando qual é a medida mais eficaz contra
-                infecções hospitalares, a resposta geralmente é:
-                <strong>higienização das mãos</strong>.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
-        >
-          <h2 class="accordion-header">
-            <button
-              class="accordion-button collapsed fw-bold bg-white text-dark"
-              data-bs-toggle="collapse"
-              data-bs-target="#isolamento"
-            >
-              <i class="bi bi-person-slash text-danger me-2"></i> Precauções e
-              Diretrizes de Isolamento
-            </button>
-          </h2>
-          <div
-            id="isolamento"
-            class="accordion-collapse collapse"
-            data-bs-parent="#biosAccordion"
-          >
-            <div class="accordion-body bg-white small text-secondary p-0">
-              <div class="table-responsive">
-                <table
-                  class="table table-striped table-sm mb-0 small align-middle"
-                >
-                  <tbody>
-                    <tr>
-                      <td class="fw-bold ps-2 text-primary">Padrão</td>
-                      <td>
-                        Vale para todos os pacientes. Inclui lavar as mãos e
-                        usar EPIs quando necessário.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="fw-bold ps-2 text-warning">Contato</td>
-                      <td>
-                        Usada quando o microrganismo é transmitido pelo toque.
-                        Exige luvas e avental.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td
-                        class="fw-bold ps-2 text-orange"
-                        style="color: #fd7e14"
-                      >
-                        Gotículas
-                      </td>
-                      <td>
-                        Indicada para doenças como gripe. Utiliza máscara
-                        cirúrgica.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="fw-bold ps-2 text-danger">Aerossóis</td>
-                      <td>
-                        Utilizada em doenças como tuberculose. É necessário usar
-                        máscara N95 porque as partículas ficam suspensas no ar
-                        por mais tempo.
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
-        >
-          <h2 class="accordion-header">
-            <button
-              class="accordion-button collapsed fw-bold bg-white text-dark"
-              data-bs-toggle="collapse"
-              data-bs-target="#pgrss"
-            >
-              <i class="bi bi-trash3-fill text-success me-2"></i> Gestão de
-              Resíduos de Saúde (PGRSS)
-            </button>
-          </h2>
-          <div
-            id="pgrss"
-            class="accordion-collapse collapse"
-            data-bs-parent="#biosAccordion"
-          >
-            <div class="accordion-body bg-white small text-secondary">
-              <p>
-                O PGRSS organiza o descarte correto dos resíduos produzidos nos
-                serviços de saúde.
-              </p>
-
-              <p>
-                Uma das etapas mais importantes é separar o lixo corretamente no
-                momento em que ele é gerado.
-              </p>
-
-              <ul>
-                <li>
-                  <strong>Grupo A:</strong> materiais contaminados com sangue ou
-                  secreções.
-                </li>
-                <li>
-                  <strong>Grupo B:</strong> medicamentos e produtos químicos.
-                </li>
-                <li><strong>Grupo C:</strong> materiais radioativos.</li>
-                <li>
-                  <strong>Grupo D:</strong> lixo comum, como papel e restos de
-                  alimentos.
-                </li>
-                <li>
-                  <strong>Grupo E:</strong> perfurocortantes, como agulhas e
-                  lâminas.
-                </li>
-              </ul>
-
-              <p>
-                Questão clássica de prova: agulhas pertencem ao
-                <strong>Grupo E</strong>.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
-        >
-          <h2 class="accordion-header">
-            <button
-              class="accordion-button collapsed fw-bold bg-white text-dark"
-              data-bs-toggle="collapse"
-              data-bs-target="#legal"
-            >
-              <i class="bi bi-bank2 text-secondary me-2"></i> Ergonomia, Ética e
-              Legislação Acadêmica
-            </button>
-          </h2>
-          <div
-            id="legal"
-            class="accordion-collapse collapse"
-            data-bs-parent="#biosAccordion"
-          >
-            <div class="accordion-body bg-white small text-secondary">
-              <p>
-                Quem trabalha na área da saúde passa muito tempo em pé,
-                movimenta pacientes e realiza esforço físico constantemente.
-              </p>
-
-              <p>
-                Por isso, a ergonomia ajuda a evitar dores e lesões,
-                principalmente na coluna.
-              </p>
-
-              <p>
-                Ao transferir um paciente, o ideal é usar a força das pernas e
-                evitar sobrecarregar as costas.
-              </p>
-
-              <p>
-                <strong>Negligência:</strong> quando o profissional deixa de
-                fazer algo que deveria fazer.
-              </p>
-
-              <p>
-                <strong>Imprudência:</strong> quando age sem cuidado ou de forma
-                precipitada.
-              </p>
-
-              <p>
-                <strong>Imperícia:</strong> quando realiza um procedimento sem
-                possuir conhecimento técnico suficiente.
-              </p>
-
-              <p>
-                A Lei de Biossegurança regula o uso de organismos geneticamente
-                modificados e pesquisas com células-tronco.
-              </p>
-
-              <p>
-                A Lei Arouca estabelece regras para pesquisas com animais e
-                segue o princípio dos 3Rs: Substituir, Reduzir e Refinar.
-              </p>
-            </div>
-          </div>
-        </div>
+        </a>
       </div>
-    </section>
-
-    <section
-      id="primeiros-socorros"
-      class="content-section container my-5 pt-2"
-    >
-      <div class="section-header text-center mb-4">
-        <h2
-          class="fw-bold border-bottom border-success border-3 d-inline-block pb-2"
-        >
-          2. Primeiros Socorros e Emergências
-        </h2>
-        <p class="text-muted small">
-          Atuação clínica imediata, suporte básico à vida e bases
-          fisiopatológicas.
-        </p>
+      <div class="col-6">
+        <a href="#flashcards"
+          class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark">
+          <div class="card-body p-2">
+            <i class="bi bi-card-text text-warning h2 d-block mb-1"></i>
+            <span class="fw-bold small">Flashcards</span>
+          </div>
+        </a>
       </div>
-
-      <div class="text-center mb-4">
-        <img
-          src="img/socorros.png"
-          alt="Protocolo Atendimento de Emergência"
-          class="section-image img-fluid rounded-3 shadow-sm"
-          style="
-            max-height: 180px;
-            width: 100%;
-            object-fit: cover;
-            object-position: bottom;
-          "
-        />
+      <div class="col-6">
+        <a href="#quiz"
+          class="nav-card card h-100 text-decoration-none border-0 text-center py-3 bg-white shadow-sm text-dark">
+          <div class="card-body p-2">
+            <i class="bi bi-lightbulb text-info h2 d-block mb-1"></i>
+            <span class="fw-bold small">Simulado</span>
+          </div>
+        </a>
       </div>
+    </div>
+  </nav>
 
-      <div class="accordion shadow-sm" id="socorrosAccordion">
-        <div
-          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
-        >
-          <h2 class="accordion-header">
-            <button
-              class="accordion-button fw-bold bg-white text-dark"
-              data-bs-toggle="collapse"
-              data-bs-target="#xabcde"
-            >
-              <i class="bi bi-heart-pulse text-danger me-2"></i> Avaliação
-              Sistemática: Protocolo XABCDE
-            </button>
-          </h2>
-          <div
-            id="xabcde"
-            class="accordion-collapse collapse show"
-            data-bs-parent="#socorrosAccordion"
-          >
-            <div class="accordion-body bg-white small text-secondary">
-              <p>
-                O protocolo XABCDE ajuda a identificar rapidamente o que pode
-                matar a vítima primeiro.
-              </p>
+  <!-- SEÇÃO 1: HISTÓRIA E LEGISLAÇÃO -->
+  <section id="historia" class="content-section container my-5 pt-4">
+    <div class="section-header text-center mb-4">
+      <h2 class="fw-bold border-bottom border-danger border-3 d-inline-block pb-2">
+        1. História e Fundamentos da Fisioterapia
+      </h2>
+      <p class="text-muted small">
+        Entenda como a profissão nasceu, cresceu e quais são as leis que a regulamentam hoje.
+      </p>
+    </div>
 
-              <p><strong>X:</strong> controlar sangramentos graves.</p>
+    <div class="accordion shadow-sm" id="historiaAccordion">
 
-              <p>
-                <strong>A:</strong> verificar se as vias aéreas estão livres e
-                proteger a coluna cervical.
-              </p>
-
-              <p>
-                <strong>B:</strong> observar se a vítima está respirando
-                adequadamente.
-              </p>
-
-              <p>
-                <strong>C:</strong> avaliar circulação, pulso e possíveis sinais
-                de choque.
-              </p>
-
-              <p>
-                <strong>D:</strong> verificar o nível de consciência e as
-                pupilas.
-              </p>
-
-              <p>
-                <strong>E:</strong> procurar lesões escondidas sem deixar a
-                vítima perder calor.
-              </p>
-
-              <p>
-                Lembre-se: o X foi adicionado antes do ABCDE porque hemorragias
-                graves podem matar em poucos minutos.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
-        >
-          <h2 class="accordion-header">
-            <button
-              class="accordion-button collapsed fw-bold bg-white text-dark"
-              data-bs-toggle="collapse"
-              data-bs-target="#rcp"
-            >
-              <i class="bi bi-activity text-danger me-2"></i> Ressuscitação
-              Cardiopulmonar (RCP) e OVACE
-            </button>
-          </h2>
-          <div
-            id="rcp"
-            class="accordion-collapse collapse"
-            data-bs-parent="#socorrosAccordion"
-          >
-            <div class="accordion-body bg-white small text-secondary">
-              <p>Atualmente a sequência da RCP é CAB.</p>
-
-              <p>
-                Primeiro fazemos as compressões, depois cuidamos das vias aéreas
-                e da respiração.
-              </p>
-
-              <p>
-                As compressões devem ocorrer entre 100 e 120 vezes por minuto e
-                atingir profundidade de aproximadamente 5 a 6 cm em adultos.
-              </p>
-
-              <p>
-                Se a pessoa estiver engasgada e não conseguir falar ou tossir,
-                realize golpes nas costas e a Manobra de Heimlich.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
-        >
-          <h2 class="accordion-header">
-            <button
-              class="accordion-button collapsed fw-bold bg-white text-dark"
-              data-bs-toggle="collapse"
-              data-bs-target="#emergencias"
-            >
-              <i class="bi bi-virus2 text-warning me-2"></i> Emergências
-              Clínicas e Traumáticas
-            </button>
-          </h2>
-          <div
-            id="emergencias"
-            class="accordion-collapse collapse"
-            data-bs-parent="#socorrosAccordion"
-          >
-            <div class="accordion-body bg-white small text-secondary">
-              <p>
-                <strong>Infarto:</strong> dor forte no peito que pode se
-                espalhar para braço, pescoço ou mandíbula. Mantenha a pessoa
-                calma e procure atendimento urgente.
-              </p>
-
-              <p>
-                <strong>Hipoglicemia:</strong> queda do açúcar no sangue. Se a
-                pessoa estiver consciente, ofereça algo doce.
-              </p>
-
-              <p>
-                <strong>Crise hipertensiva:</strong> pressão muito elevada que
-                pode colocar a vida em risco.
-              </p>
-
-              <p><strong>Desmaio:</strong> deite a pessoa e eleve as pernas.</p>
-
-              <p>
-                <strong>Convulsão:</strong> afaste objetos perigosos, proteja a
-                cabeça e nunca coloque nada dentro da boca.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden"
-        >
-          <h2 class="accordion-header">
-            <button
-              class="accordion-button collapsed fw-bold bg-white text-dark"
-              data-bs-toggle="collapse"
-              data-bs-target="#fisioEmerg"
-            >
-              <i class="bi bi-lungs-fill text-info me-2"></i> Tópicos Avançados
-              de Fisioterapia na Emergência
-            </button>
-          </h2>
-          <div
-            id="fisioEmerg"
-            class="accordion-collapse collapse"
-            data-bs-parent="#socorrosAccordion"
-          >
-            <div class="accordion-body bg-white small text-secondary">
-              <p>
-                Durante uma crise de asma, a respiração fica mais difícil e o
-                paciente pode começar a respirar muito rápido para tentar
-                compensar a falta de ar.
-              </p>
-
-              <p>
-                <strong>Cheyne-Stokes:</strong> a respiração vai ficando mais
-                forte, depois mais fraca e pode parar por alguns segundos.
-              </p>
-
-              <p>
-                <strong>Kussmaul:</strong> respiração muito profunda e
-                acelerada, comum em casos de acidose metabólica.
-              </p>
-
-              <p>
-                <strong>Biot:</strong> respiração totalmente irregular e
-                imprevisível.
-              </p>
-
-              <p>
-                O gelo ajuda a reduzir dor e inchaço, mas o resfriamento dos
-                músculos acontece de forma lenta.
-              </p>
-
-              <p>
-                No protocolo P.R.I.C.E. lembre-se: Proteção, Repouso, Gelo,
-                Compressão e Elevação.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="flashcards" class="content-section container my-5">
-      <div class="section-header text-center mb-4">
-        <h2
-          class="fw-bold border-bottom border-warning border-3 d-inline-block pb-2"
-        >
-          3. Flashcards de Memorização Ativa
-        </h2>
-        <p class="text-muted small">
-          Toque nos cards abaixo para revelar a resposta e testar sua memória
-          imediata.
-        </p>
-      </div>
-
-      <div class="row g-3 justify-content-center">
-        <div class="col-12 col-sm-6 col-md-4">
-          <div
-            class="flashcard card h-100 border-0 shadow-sm rounded-3 bg-white"
-            style="cursor: pointer; min-height: 120px"
-            onclick="this.classList.toggle('flipped')"
-          >
-            <div
-              class="card-body d-flex align-items-center justify-content-center text-center p-3"
-            >
-              <div class="flashcard-content">
-                <p class="fw-bold text-primary mb-0 q-front">
-                  Qual a conduta imediata em caso de acidente pérfuro-cortante
-                  usado?
-                </p>
-                <p class="text-success small mb-0 d-none a-back">
-                  Lavar abundantemente com água e sabão, notificar imediatamente
-                  o acidente de trabalho e buscar atendimento médico para início
-                  imediato do Protocolo PEP (Profilaxia Pós-Exposição).
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4">
-          <div
-            class="flashcard card h-100 border-0 shadow-sm rounded-3 bg-white"
-            style="cursor: pointer; min-height: 120px"
-            onclick="this.classList.toggle('flipped')"
-          >
-            <div
-              class="card-body d-flex align-items-center justify-content-center text-center p-3"
-            >
-              <div class="flashcard-content">
-                <p class="fw-bold text-primary mb-0 q-front">
-                  Qual o significado do princípio dos 3Rs na Lei Arouca
-                  (CONCEA)?
-                </p>
-                <p class="text-success small mb-0 d-none a-back">
-                  <strong>S</strong>ubstituir (métodos alternativos),
-                  <strong>R</strong>eduzir (menor número de animais) e
-                  <strong>R</strong>efinar (minimizar dor/estresse por
-                  analgesia).
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4">
-          <div
-            class="flashcard card h-100 border-0 shadow-sm rounded-3 bg-white"
-            style="cursor: pointer; min-height: 120px"
-            onclick="this.classList.toggle('flipped')"
-          >
-            <div
-              class="card-body d-flex align-items-center justify-content-center text-center p-3"
-            >
-              <div class="flashcard-content">
-                <p class="fw-bold text-primary mb-0 q-front">
-                  O que define o padrão ventilatório de Kussmaul?
-                </p>
-                <p class="text-success small mb-0 d-none a-back">
-                  Respirações profundas, ruidosas e hiperventiladas causadas por
-                  Acidose, comum na descompensação da Cetoacidose Diabética.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="quiz" class="content-section container my-5">
-      <div class="card border-0 shadow rounded-4 overflow-hidden mb-4">
-        <div class="card-body bg-dark text-white text-center p-4">
-          <span class="badge bg-warning text-dark mb-2 fw-bold"
-            >Nível Acadêmico Superior</span
-          >
-          <h2 class="fw-bold h4">Exame Simulado Oficial</h2>
-          <p class="small text-muted mb-0">
-            Questões elaboradas nos moldes de avaliações universitárias de
-            Fisioterapia.
-          </p>
-        </div>
-      </div>
-
-      <div
-        class="exam-info alert alert-secondary bg-white shadow-sm border-0 rounded-3 mb-4 py-3"
-      >
-        <div class="row text-center g-2 small">
-          <div class="col-4 border-end">
-            <strong>19 Questões</strong><br /><span class="text-muted"
-              >Múltipla Escolha/ Dissertativa</span
-            >
-          </div>
-          <div class="col-4 border-end">
-            <strong>Nota de Corte</strong><br /><span class="text-success"
-              >60% de Acerto</span
-            >
-          </div>
-          <div class="col-4">
-            <strong>Tempo Médio</strong><br /><span class="text-muted"
-              >60 minutos</span
-            >
-          </div>
-        </div>
-      </div>
-
-      <form id="quizForm" class="mb-4">
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-primary">Questão 1 - Regulamentação</h5>
-            <p>
-              Segundo a Resolução CFM 1451/95, qual alternativa define
-              corretamente o conceito de EMERGÊNCIA?
-            </p>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q1"
-                value="A"
-              />
-              <label class="form-check-label"
-                >Constatação médica de condições de agravo à saúde que impliquem
-                em risco iminente de vida ou sofrimento intenso, exigindo
-                tratamento médico imediato.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q1"
-                value="B"
-              />
-              <label class="form-check-label"
-                >Constatação médica de condições de agravo à saúde que não
-                impliquem em risco iminente de vida, dispensando tratamento
-                imediato.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q1"
-                value="C"
-              />
-              <label class="form-check-label"
-                >A ocorrência imprevista de agravo à saúde com ou sem risco
-                potencial de vida.</label
-              >
-            </div>
-            <div id="f1" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-primary">Questão 2 - Gestão em Saúde</h5>
-            <p>
-              Na área de Urgência e Emergência, o impacto do atendimento pode
-              ser medido diretamente através de quais indicadores?
-            </p>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q2"
-                value="A"
-              />
-              <label class="form-check-label"
-                >Pelo aumento do índice de Anos Potenciais de Vida Perdidos
-                (APVP).</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q2"
-                value="B"
-              />
-              <label class="form-check-label"
-                >Pelo aumento dos gastos realizados com internação hospitalar e
-                internação em UTI.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q2"
-                value="C"
-              />
-              <label class="form-check-label"
-                >Exclusivamente por meio de informações publicadas em jornais e
-                revistas de grande circulação.</label
-              >
-            </div>
-            <div id="f2" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-primary">Questão 3 - Sinais Vitais</h5>
-            <p>
-              Vários fatores podem afetar o pulso (idade, estresse, drogas).
-              Assinale a alternativa que apresenta uma exceção aos locais
-              anatômicos usuais de verificação do pulso arterial:
-            </p>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q3"
-                value="A"
-              />
-              <label class="form-check-label">Veia Safena</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q3"
-                value="B"
-              />
-              <label class="form-check-label">Artéria Radial</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q3"
-                value="C"
-              />
-              <label class="form-check-label">Artéria Carotídea</label>
-            </div>
-            <div id="f3" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-primary">Questão 4 - Sinais Vitais</h5>
-            <p>
-              Quais são os parâmetros biológicos compreendidos e classificados
-              classicamente como SINAIS VITAIS?
-            </p>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q4"
-                value="A"
-              />
-              <label class="form-check-label"
-                >Consciência, Pulso (F.C) e Respiração.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q4"
-                value="B"
-              />
-              <label class="form-check-label"
-                >Temperatura, Pulso (F.C), Respiração e Pressão Arterial.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q4"
-                value="C"
-              />
-              <label class="form-check-label"
-                >Frequência respiratória, Frequência cardíaca, Cianose e
-                avaliação das pupilas.</label
-              >
-            </div>
-            <div id="f4" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-primary">Questão 5 - Sinais de Apoio</h5>
-            <p>
-              Os sinais de apoio são emitidos pelo corpo em função do estado de
-              funcionamento dos órgãos. Assinale a alternativa que cita
-              corretamente esses sinais:
-            </p>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q5"
-                value="A"
-              />
-              <label class="form-check-label"
-                >Dilatação/reatividade das pupilas, cor/umidade da pele, estado
-                de consciência e motilidade/sensibilidade do corpo.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q5"
-                value="B"
-              />
-              <label class="form-check-label"
-                >Frequência cardíaca, Pressão arterial e presença de
-                cianose.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q5"
-                value="C"
-              />
-              <label class="form-check-label"
-                >Temperatura corpórea e nível de dilatação pupilar
-                exclusivamente.</label
-              >
-            </div>
-            <div id="f5" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-primary">
-              Questão 6 - Ritmos Respiratórios
-            </h5>
-            <p>
-              A respiração que se caracteriza por uma fase de apneia seguida de
-              incursões inspiratórias cada vez mais profundas até um máximo,
-              decrescendo até uma nova pausa, denomina-se:
-            </p>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q6"
-                value="A"
-              />
-              <label class="form-check-label">Respiração de Kussmaul</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q6"
-                value="B"
-              />
-              <label class="form-check-label">Respiração de Biot</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q6"
-                value="C"
-              />
-              <label class="form-check-label"
-                >Respiração de Cheyne-Stokes</label
-              >
-            </div>
-            <div id="f6" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-primary">
-              Questão 7 - Lesões Musculoesqueléticas
-            </h5>
-            <p>
-              Qual alternativa define corretamente a lesão do tipo "Luxação"?
-            </p>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q7"
-                value="A"
-              />
-              <label class="form-check-label"
-                >Deslocamento de um osso de sua posição normal na
-                articulação.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q7"
-                value="B"
-              />
-              <label class="form-check-label"
-                >Lesão na qual os ligamentos sofrem distensão ou ruptura, sem
-                lesão no osso.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q7"
-                value="C"
-              />
-              <label class="form-check-label"
-                >Estiramento muscular severo ao redor de uma estrutura
-                articular.</label
-              >
-            </div>
-            <div id="f7" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-primary">Questão 8 - Termorregulação</h5>
-            <p>
-              Considerando os valores padrão de temperatura corporal axilar,
-              assinale a faixa que descreve corretamente o "Estado Febril":
-            </p>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q8"
-                value="A"
-              />
-              <label class="form-check-label">36°C a 37°C</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q8"
-                value="B"
-              />
-              <label class="form-check-label">37°C a 38°C</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q8"
-                value="C"
-              />
-              <label class="form-check-label">38°C a 39°C</label>
-            </div>
-            <div id="f8" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-primary">Questão 9 - Queimaduras</h5>
-            <p>
-              Qual grau de queimadura é caracterizado por acometer a epiderme e
-              porções variadas da derme, sendo denominado queimadura de
-              espessura parcial?
-            </p>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q9"
-                value="A"
-              />
-              <label class="form-check-label">Primeiro Grau</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q9"
-                value="B"
-              />
-              <label class="form-check-label">Segundo Grau</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q9"
-                value="C"
-              />
-              <label class="form-check-label">Terceiro Grau</label>
-            </div>
-            <div id="f9" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-primary">
-              Questão 10 - Parada Cardiorrespiratória
-            </h5>
-            <p>
-              Em consonância com as diretrizes de RCP, qual é o ritmo de
-              compressões por minuto preconizado para um atendimento em adulto?
-            </p>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q10"
-                value="A"
-              />
-              <label class="form-check-label"
-                >60 a 80 compressões por minuto.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q10"
-                value="B"
-              />
-              <label class="form-check-label"
-                >100 a 120 compressões por minuto.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q10"
-                value="C"
-              />
-              <label class="form-check-label"
-                >Mais de 140 compressões por minuto.</label
-              >
-            </div>
-            <div id="f10" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-primary">
-              Questão 11 - Patologia Respiratória
-            </h5>
-            <p>A Asma pode ser definida clinicamente como:</p>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q11"
-                value="A"
-              />
-              <label class="form-check-label"
-                >Doença inflamatória crônica das vias aéreas caracterizada por
-                uma hiper-responsividade traqueobrônquica a estímulos diversos,
-                resultando em estreitamento difuso das vias aéreas.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q11"
-                value="B"
-              />
-              <label class="form-check-label"
-                >Doença inflamatória aguda das vias aéreas que acarreta o
-                alargamento permanente das estruturas traqueobrônquicas.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q11"
-                value="C"
-              />
-              <label class="form-check-label"
-                >Doença puramente infecciosa do sistema respiratório baixo,
-                gerando desconforto agudo.</label
-              >
-            </div>
-            <div id="f11" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-primary">
-              Questão 12 - Saúde do Trabalhador
-            </h5>
-            <p>
-              De acordo com a FIOCRUZ (2017), ruídos, variações térmicas
-              (calor/frio), pressões anormais e radiações são classificados
-              como:
-            </p>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q12"
-                value="A"
-              />
-              <label class="form-check-label">Riscos Químicos</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q12"
-                value="B"
-              />
-              <label class="form-check-label">Riscos Biológicos</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q12"
-                value="C"
-              />
-              <label class="form-check-label">Riscos Físicos</label>
-            </div>
-            <div id="f12" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-primary">Questão 13 - Biossegurança</h5>
-            <p>
-              Sobre a higienização das mãos e controle de infecções, assinale a
-              afirmativa INCORRETA:
-            </p>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q13"
-                value="A"
-              />
-              <label class="form-check-label"
-                >O uso de luvas de procedimento substitui a necessidade de
-                lavagem das mãos.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q13"
-                value="B"
-              />
-              <label class="form-check-label"
-                >Higienizar as mãos com preparação alcoólica é um processo mais
-                rápido do que lavá-las com água e sabonete.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q13"
-                value="C"
-              />
-              <label class="form-check-label"
-                >Máscaras do tipo N95 possuem indicações específicas de barreira
-                filtrante de aerossóis, e não apenas contra respingos.</label
-              >
-            </div>
-            <div id="f13" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-primary">
-              Questão 14 - Primeiros Socorros
-            </h5>
-            <p>
-              Diante de uma suspeita clínica de fratura em membro apendicular,
-              qual deve ser a conduta imediata do socorrista?
-            </p>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q14"
-                value="A"
-              />
-              <label class="form-check-label"
-                >Realizar tração manual para tentar colocar o osso no
-                alinhamento anatômico original.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q14"
-                value="B"
-              />
-              <label class="form-check-label"
-                >Promover a imobilização do membro na posição em que se
-                encontra, englobando as duas articulações adjacentes.</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q14"
-                value="C"
-              />
-              <label class="form-check-label"
-                >Massagear vigorosamente o local para ativar a circulação
-                colateral.</label
-              >
-            </div>
-            <div id="f14" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-primary">Questão 15 - Biossegurança</h5>
-            <p>
-              Qual o tipo de precaução biológica obrigatória que a equipe
-              assistencial deve adotar ao atender um paciente com suspeita ou
-              diagnóstico confirmado de Tuberculose Pulmonar Ativa?
-            </p>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q15"
-                value="A"
-              />
-              <label class="form-check-label">Precaução por Gotículas</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q15"
-                value="B"
-              />
-              <label class="form-check-label"
-                >Precaução por Aerossóis (uso de máscara N95/PFF2)</label
-              >
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="q15"
-                value="C"
-              />
-              <label class="form-check-label"
-                >Precaução de Contato estrita</label
-              >
-            </div>
-            <div id="f15" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-success">Questão 16 - Dissertativa</h5>
-            <p>
-              O atendimento de primeiros socorros pode ser dividido em etapas
-              básicas sequenciais (Avaliação do local, Análise da cena, Chamada
-              de socorro, etc.). Cite e descreva detalhadamente a importância de
-              cada uma dessas fases operacionais.
-            </p>
-            <textarea
-              class="form-control"
-              rows="4"
-              name="q16"
-              placeholder="Digite sua resposta aqui..."
-            ></textarea>
-            <div id="f16" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-success">Questão 17 - Dissertativa</h5>
-            <p>
-              O choque circulatório é uma síndrome grave de hipoperfusão
-              tecidual sistêmica. Quais são as principais classificações dos
-              estados de choque (ex: Hipovolêmico, Cardiogênico, Obstrutivo,
-              Distributivo)? Diferencie suas causas básicas.
-            </p>
-            <textarea
-              class="form-control"
-              rows="4"
-              name="q17"
-              placeholder="Digite sua resposta aqui..."
-            ></textarea>
-            <div id="f17" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-success">Questão 18 - Dissertativa</h5>
-            <p>
-              Conceitue a Síndrome de Burnout no ambiente da área da saúde e
-              descreva os principais sintomas clínicos e organizacionais que
-              essa condição manifesta no profissional afetado.
-            </p>
-            <textarea
-              class="form-control"
-              rows="4"
-              name="q18"
-              placeholder="Digite sua resposta aqui..."
-            ></textarea>
-            <div id="f18" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
-          <div class="card-body">
-            <h5 class="fw-bold text-success">Questão 19 - Dissertativa</h5>
-            <p>
-              Defina o conceito clínico de desmaio (síncope) e descreva ao menos
-              três fatores fisiológicos ou ambientais comuns que podem
-              contribuir diretamente para o desencadeamento dessa perda
-              temporária de consciência.
-            </p>
-            <textarea
-              class="form-control"
-              rows="4"
-              name="q19"
-              placeholder="Digite sua resposta aqui..."
-            ></textarea>
-            <div id="f19" class="feedback-box alert d-none mt-3"></div>
-          </div>
-        </div>
-
-        <div class="d-grid gap-2 mt-4">
-          <button type="button" id="submitQuiz" class="btn btn-primary btn-lg">
-            Corrigir Simulado
+      <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
+        <h2 class="accordion-header">
+          <button class="accordion-button fw-bold bg-white text-dark" data-bs-toggle="collapse"
+            data-bs-target="#conceito">
+            <i class="bi bi-book-fill text-primary me-2"></i>
+            O que é Fisioterapia? Conceito e Símbolo
           </button>
-          <button
-            type="button"
-            id="resetQuiz"
-            class="btn btn-outline-secondary d-none"
-          >
-            Refazer Teste
-          </button>
-        </div>
-      </form>
-    </section>
-
-    <section id="resultsSection" class="container my-5 d-none">
-      <div
-        class="result-card card border-0 bg-white shadow rounded-4 text-center p-4"
-      >
-        <div class="card-body">
-          <h2 class="fw-bold h4 text-dark mb-3">
-            Painel de Rendimento Acadêmico
-          </h2>
-          <div id="scoreDisplay" class="display-3 fw-bold text-success mb-2">
-            0%
+        </h2>
+        <div id="conceito" class="accordion-collapse collapse show" data-bs-parent="#historiaAccordion">
+          <div class="accordion-body bg-white small text-secondary">
+            <p>
+              A Fisioterapia é a ciência que estuda o <strong>movimento humano</strong>. Seu objetivo é prevenir
+              doenças, promover a saúde e reabilitar quem está lesionado, usando recursos físicos como luz, calor, frio,
+              eletricidade e exercícios.
+            </p>
+            <p>
+              <strong>O Símbolo:</strong> são duas serpentes verdes (representando sabedoria e conhecimento)
+              entrelaçadas em um raio dourado (energia e recursos físicos aplicados com consciência).
+            </p>
+            <p>
+              <strong>A cor oficial da profissão é o verde</strong>, que simboliza saúde e vitalidade.
+            </p>
+            <p>
+              <strong>Dica de prova:</strong> se cair a definição de Fisioterapia, lembre-se sempre das palavras-chave:
+              <em>movimento, prevenção, promoção e reabilitação</em>.
+            </p>
           </div>
-          <p id="scoreFeedback" class="text-secondary small mb-0"></p>
         </div>
       </div>
-    </section>
 
-    <footer
-      class="bg-dark text-white text-center py-4 mt-5 border-top border-secondary"
-    >
-      <div class="container">
-        <p class="mb-1 fw-bold">FisioPrep</p>
-        <p class="x-small opacity-50 mb-0">
-          Plataforma de Revisão Acadêmica Integrada • 2026
+      <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed fw-bold bg-white text-dark" data-bs-toggle="collapse"
+            data-bs-target="#mundoHist">
+            <i class="bi bi-globe2 text-warning me-2"></i>
+            História no Mundo: da Antiguidade às Guerras
+          </button>
+        </h2>
+        <div id="mundoHist" class="accordion-collapse collapse" data-bs-parent="#historiaAccordion">
+          <div class="accordion-body bg-white small text-secondary">
+            <p>
+              <strong>Antiguidade:</strong> gregos, egípcios e chineses já utilizavam água (hidroterapia) e massagem
+              para fins terapêuticos. Hipócrates descreveu técnicas de manipulação e exercícios.
+            </p>
+            <p>
+              <strong>Idade Média:</strong> representou um retrocesso. O corpo humano era visto como algo "pecaminoso",
+              o que prejudicou o avanço das ciências da saúde.
+            </p>
+            <p>
+              <strong>Séculos XIX e XX – O grande salto:</strong> as duas Guerras Mundiais e as epidemias de
+              poliomielite foram os principais marcos. Milhares de feridos e crianças paralisadas precisavam de
+              reabilitação urgente, o que impulsionou a organização da profissão.
+            </p>
+            <p>
+              A <strong>Segunda Guerra Mundial</strong> gerou uma grande demanda por reabilitação de amputados e lesados
+              medulares, consolidando a fisioterapia como profissão indispensável nos países aliados.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed fw-bold bg-white text-dark" data-bs-toggle="collapse"
+            data-bs-target="#brasilHist">
+            <i class="bi bi-flag-fill text-success me-2"></i>
+            História no Brasil: de Técnico a Profissão Superior
+          </button>
+        </h2>
+        <div id="brasilHist" class="accordion-collapse collapse" data-bs-parent="#historiaAccordion">
+          <div class="accordion-body bg-white small text-secondary">
+            <p>
+              <strong>1951:</strong> surgem os primeiros cursos técnicos de fisioterapia no Brasil, com duração de 1
+              ano, ligados à USP (Universidade de São Paulo). O objetivo era suprir a demanda gerada pela epidemia de
+              poliomielite.
+            </p>
+            <p>
+              <strong>1963:</strong> a profissão é reconhecida como de nível superior após pressão das epidemias de
+              pólio e do aumento de acidentes de trabalho na industrialização brasileira.
+            </p>
+            <p>
+              <strong>1969:</strong> o <strong>Decreto-Lei nº 938/69</strong> regulamenta definitivamente a profissão em
+              nível superior — é a "certidão de nascimento" da Fisioterapia no Brasil.
+            </p>
+            <p>
+              <strong>Dica de prova:</strong> o Brasil seguiu o mesmo caminho do mundo: demanda por reabilitação
+              pós-guerra e pós-poliomielite forçou a profissionalização.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed fw-bold bg-white text-dark" data-bs-toggle="collapse"
+            data-bs-target="#leis">
+            <i class="bi bi-bank2 text-danger me-2"></i>
+            As Leis Fundamentais da Profissão
+          </button>
+        </h2>
+        <div id="leis" class="accordion-collapse collapse" data-bs-parent="#historiaAccordion">
+          <div class="accordion-body bg-white small text-secondary">
+            <p>As três leis mais cobradas em prova:</p>
+            <ul>
+              <li>
+                <strong>Decreto-Lei nº 938/1969:</strong> regulamenta a profissão e define o fisioterapeuta como
+                profissional de nível superior. É a lei mais importante da profissão.
+              </li>
+              <li>
+                <strong>Lei nº 6.316/1975:</strong> criou o <strong>COFFITO</strong> (Conselho Federal de Fisioterapia e
+                Terapia Ocupacional) e os <strong>CREFITOs</strong> (Conselhos Regionais). O COFFITO cria as normas; os
+                CREFITOs fiscalizam e emitem a carteira profissional.
+              </li>
+              <li>
+                <strong>Lei nº 8.856/1994:</strong> garante a <strong>jornada de 30 horas semanais</strong> para
+                fisioterapeutas e terapeutas ocupacionais.
+              </li>
+            </ul>
+            <p>
+              <strong>Atualização 2026 — Acórdão COFFITO nº 735/2024:</strong> o fisioterapeuta agora tem autonomia
+              definitiva para <strong>prescrever medicamentos e insumos</strong> necessários ao tratamento e realizar
+              <strong>procedimentos invasivos não cirúrgicos</strong> (agulhamentos, injetáveis).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed fw-bold bg-white text-dark" data-bs-toggle="collapse"
+            data-bs-target="#avaliacao">
+            <i class="bi bi-clipboard2-pulse-fill text-info me-2"></i>
+            Avaliação Fisioterapêutica e Recursos Iniciais
+          </button>
+        </h2>
+        <div id="avaliacao" class="accordion-collapse collapse" data-bs-parent="#historiaAccordion">
+          <div class="accordion-body bg-white small text-secondary">
+            <p>
+              A <strong>Anamnese</strong> é a entrevista inicial. O fisioterapeuta pergunta sobre a queixa principal, o
+              histórico da doença e os hábitos de vida do paciente.
+            </p>
+            <p>
+              Durante a avaliação, os <strong>sinais vitais</strong> devem ser aferidos obrigatoriamente: pressão
+              arterial, frequência cardíaca, frequência respiratória e temperatura. A <strong>dor é o 5º sinal
+                vital</strong>.
+            </p>
+            <p>
+              O <strong>Diagnóstico Cinesiológico Funcional</strong> é a identificação de disfunções do movimento —
+              diferente do diagnóstico médico (focado na doença). Ele é a base da autonomia profissional do
+              fisioterapeuta.
+            </p>
+            <p>
+              <strong>Recursos básicos:</strong>
+            </p>
+            <ul>
+              <li><strong>Cinesioterapia:</strong> terapia pelo movimento (exercícios terapêuticos).</li>
+              <li><strong>Mecanoterapia:</strong> exercícios com aparelhos mecânicos (pesos, molas, roldanas).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SEÇÃO 2: ESPECIALIDADES E RECURSOS -->
+  <section id="especialidades" class="content-section container my-5 pt-2">
+    <div class="section-header text-center mb-4">
+      <h2 class="fw-bold border-bottom border-success border-3 d-inline-block pb-2">
+        2. Especialidades e Recursos Terapêuticos
+      </h2>
+      <p class="text-muted small">
+        Conheça as áreas de atuação e os principais recursos usados na prática clínica.
+      </p>
+    </div>
+
+    <div class="accordion shadow-sm" id="especialidadesAccordion">
+
+      <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
+        <h2 class="accordion-header">
+          <button class="accordion-button fw-bold bg-white text-dark" data-bs-toggle="collapse"
+            data-bs-target="#postural">
+            <i class="bi bi-person-standing text-primary me-2"></i>
+            Avaliação Postural
+          </button>
+        </h2>
+        <div id="postural" class="accordion-collapse collapse show" data-bs-parent="#especialidadesAccordion">
+          <div class="accordion-body bg-white small text-secondary">
+            <p>
+              O paciente deve estar com o <strong>mínimo de roupa possível</strong>. O fisioterapeuta usa o
+              <strong>simetrógrafo</strong> (quadro quadriculado) e o <strong>fio de prumo</strong>.
+            </p>
+            <p>A avaliação é feita em três planos: de frente, de costas e de lado.</p>
+            <p>Principais alterações a identificar:</p>
+            <ul>
+              <li><strong>Escoliose:</strong> curvatura lateral da coluna.</li>
+              <li><strong>Genu valgo:</strong> joelhos para dentro (formato "X").</li>
+              <li><strong>Genu varo:</strong> joelhos para fora (formato "O").</li>
+              <li><strong>Pé plano:</strong> sem arco plantar.</li>
+              <li><strong>Pé cavo:</strong> arco plantar muito elevado.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed fw-bold bg-white text-dark" data-bs-toggle="collapse"
+            data-bs-target="#eletro">
+            <i class="bi bi-lightning-charge-fill text-warning me-2"></i>
+            Eletroterapia: TENS e FES
+          </button>
+        </h2>
+        <div id="eletro" class="accordion-collapse collapse" data-bs-parent="#especialidadesAccordion">
+          <div class="accordion-body bg-white small text-secondary">
+            <p>
+              <strong>TENS (Estimulação Elétrica Transcutânea):</strong> focado em <strong>analgesia</strong> (alívio da
+              dor). Bloqueia impulsos nervosos dolorosos. Indicado em dores crônicas como artrose e dores
+              pós-cirúrgicas.
+            </p>
+            <p>
+              <strong>FES (Estimulação Elétrica Funcional):</strong> usado para provocar <strong>contração
+                muscular</strong> em músculos que perderam o controle motor. Indicado em pacientes pós-AVC ou com lesão
+              medular.
+            </p>
+            <p>
+              <strong>Dica de prova:</strong> TENS = dor / FES = músculo fraco ou paralisado.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed fw-bold bg-white text-dark" data-bs-toggle="collapse"
+            data-bs-target="#termocrio" aria-expanded="false" aria-controls="termocrio">
+            <i class="bi bi-thermometer-half text-danger me-2"></i>
+            Termoterapia e Crioterapia
+          </button>
+        </h2>
+        <div id="termocrio" class="accordion-collapse collapse" data-bs-parent="#especialidadesAccordion">
+          <div class="accordion-body bg-white small text-secondary">
+            <p>
+              <strong>Calor (Termoterapia):</strong> promove a vasodilatação, o que relaxa os músculos e melhora a
+              circulação sanguínea. É indicado principalmente em fases crônicas.
+            </p>
+            <p>
+              <strong>Frio (Crioterapia):</strong> promove a vasoconstrição, auxiliando na redução do inchaço e da
+              inflamação. É indicado nas primeiras 48 horas de uma lesão aguda.
+            </p>
+            <p>
+              <strong>Dica de prova:</strong> lesão aguda = gelo. Lesão crônica ou antes do exercício = calor.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed fw-bold bg-white text-dark" data-bs-toggle="collapse"
+            data-bs-target="#hidro">
+            <i class="bi bi-droplet-fill text-info me-2"></i>
+            Hidroterapia e Massoterapia
+          </button>
+        </h2>
+        <div id="hidro" class="accordion-collapse collapse" data-bs-parent="#especialidadesAccordion">
+          <div class="accordion-body bg-white small text-secondary">
+            <p>
+              <strong>Hidroterapia:</strong> feita em piscina aquecida entre <strong>32°C e 34°C</strong>. O
+              <strong>empuxo</strong> reduz o peso corporal na água, facilitando o movimento e diminuindo o impacto
+              articular. A <strong>pressão hidrostática</strong> auxilia no retorno venoso e reduz edemas.
+            </p>
+            <p>
+              <strong>Massoterapia:</strong> não é apenas relaxamento — o objetivo é mobilizar tecidos e melhorar a
+              circulação. Técnicas principais:
+            </p>
+            <ul>
+              <li><strong>Effleurage:</strong> deslizamento leve e superficial.</li>
+              <li><strong>Petrissage:</strong> amassamento mais profundo dos tecidos.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item border-0 mb-2 rounded shadow-sm overflow-hidden">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed fw-bold bg-white text-dark" data-bs-toggle="collapse"
+            data-bs-target="#especialidadesLista">
+            <i class="bi bi-award-fill text-success me-2"></i>
+            As Grandes Especialidades da Fisioterapia
+          </button>
+        </h2>
+        <div id="especialidadesLista" class="accordion-collapse collapse" data-bs-parent="#especialidadesAccordion">
+          <div class="accordion-body bg-white small text-secondary">
+            <ul>
+              <li><strong>Neurofuncional:</strong> trata doenças do sistema nervoso (AVC, Parkinson, Paralisia
+                Cerebral).</li>
+              <li><strong>Gerontologia:</strong> focada em idosos, buscando manter a independência e evitar quedas.
+                Regulamentada pela <strong>Resolução COFFITO nº 476/2016</strong>.</li>
+              <li><strong>Esportiva:</strong> prevenção e tratamento de lesões em atletas, com foco no retorno rápido ao
+                esporte.</li>
+              <li><strong>Acupuntura:</strong> técnica chinesa que usa agulhas em pontos do corpo para equilibrar a
+                energia (Yin e Yang).</li>
+              <li><strong>Respiratória:</strong> reabilitação pulmonar e cuidados a pacientes com doenças respiratórias.
+              </li>
+              <li><strong>Dermato-funcional:</strong> atuação em pele, tecido adiposo e estética clínica.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FLASHCARDS -->
+  <section id="flashcards" class="content-section container my-5">
+    <div class="section-header text-center mb-4">
+      <h2 class="fw-bold border-bottom border-warning border-3 d-inline-block pb-2">
+        3. Flashcards de Memorização Ativa
+      </h2>
+      <p class="text-muted small">
+        Toque nos cards abaixo para revelar a resposta e testar sua memória imediata.
+      </p>
+    </div>
+
+    <div class="row g-3 justify-content-center">
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="flashcard card h-100 border-0 shadow-sm rounded-3 bg-white"
+          style="cursor: pointer; min-height: 120px" onclick="this.classList.toggle('flipped')">
+          <div class="card-body d-flex align-items-center justify-content-center text-center p-3">
+            <div class="flashcard-content">
+              <p class="fw-bold text-primary mb-0 q-front">
+                Qual lei criou o COFFITO e os CREFITOs?
+              </p>
+              <p class="text-success small mb-0 d-none a-back">
+                <strong>Lei nº 6.316/1975</strong>.<br>
+                COFFITO: Leis federais. (nacional)<br>
+                CREFITOs: Fiscalização regional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="flashcard card h-100 border-0 shadow-sm rounded-3 bg-white"
+          style="cursor: pointer; min-height: 120px" onclick="this.classList.toggle('flipped')">
+          <div class="card-body d-flex align-items-center justify-content-center text-center p-3">
+            <div class="flashcard-content">
+              <p class="fw-bold text-primary mb-0 q-front">
+                Qual é a diferença entre TENS e FES?
+              </p>
+              <p class="text-success small mb-0 d-none a-back">
+                <strong>TENS</strong> = Alívio da dor (analgesia).<br>
+                <strong>FES</strong> = Contração do músculo (fortalecimento/reabilitação).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="flashcard card h-100 border-0 shadow-sm rounded-3 bg-white"
+          style="cursor: pointer; min-height: 120px" onclick="this.classList.toggle('flipped')">
+          <div class="card-body d-flex align-items-center justify-content-center text-center p-3">
+            <div class="flashcard-content">
+              <p class="fw-bold text-primary mb-0 q-front">
+                Qual decreto regulamentou a Fisioterapia como profissão de nível superior no Brasil?
+              </p>
+              <p class="text-success small mb-0 d-none a-back">
+                <strong>Decreto-Lei nº 938/1969</strong>.<br>
+                É a "certidão de nascimento" da profissão.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIMULADO -->
+  <section id="quiz" class="content-section container my-5">
+    <div class="card border-0 shadow rounded-4 overflow-hidden mb-4">
+      <div class="card-body bg-dark text-white text-center p-4">
+        <span class="badge bg-warning text-dark mb-2 fw-bold">Nível Acadêmico Superior</span>
+        <h2 class="fw-bold h4">Exame Simulado Oficial</h2>
+        <p class="small text-muted mb-0">
+          Questões de NP1 e NP2 nos moldes de avaliações universitárias de Fisioterapia.
         </p>
       </div>
-    </footer>
+    </div>
 
-    <button
-      id="backToTop"
-      class="btn btn-primary position-fixed rounded-circle shadow"
-      style="
+    <div class="exam-info alert alert-secondary bg-white shadow-sm border-0 rounded-3 mb-4 py-3">
+      <div class="row text-center g-2 small">
+        <div class="col-4 border-end">
+          <strong>19 Questões</strong><br /><span class="text-muted">Múltipla Escolha / Dissertativa</span>
+        </div>
+        <div class="col-4 border-end">
+          <strong>Nota de Corte</strong><br /><span class="text-success">60% de Acerto</span>
+        </div>
+        <div class="col-4">
+          <strong>Tempo Médio</strong><br /><span class="text-muted">60 minutos</span>
+        </div>
+      </div>
+    </div>
+
+    <form id="quizForm" class="mb-4">
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">Questão 1 – Definições e Regulamentação</h5>
+          <p>
+            A Fisioterapia é compreendida simultaneamente como uma ciência aplicada, um processo terapêutico e uma
+            profissão de nível superior. Analise as afirmações a seguir:<br><br>
+            I. O fisioterapeuta é o profissional habilitado à construção do diagnóstico cinético-funcional (diagnóstico
+            fisioterapêutico) e à prescrição das condutas terapêuticas.<br>
+            II. A fisioterapia atua exclusivamente na fase de reabilitação da atenção à saúde, não possuindo recursos ou
+            atribuições para atuar nas fases de prevenção e promoção.<br>
+            III. Como processo terapêutico, a fisioterapia utiliza recursos como luz, calor, frio, exercícios, massagens
+            e agentes eletroterápicos, levando em conta aspectos psicológicos, sociais e econômicos do indivíduo.<br>
+            IV. A profissão é regulamentada por dispositivos legais, como o Decreto-Lei 938/69, e possui órgãos como o
+            COFFITO, que tem a função de legislar e normalizar a profissão.<br><br>
+            Está correto o que se afirma em:
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q1" value="A" />
+            <label class="form-check-label">I e II, apenas.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q1" value="B" />
+            <label class="form-check-label">III e IV, apenas.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q1" value="C" />
+            <label class="form-check-label">II, III e IV, apenas.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q1" value="D" />
+            <label class="form-check-label">I, III e IV, apenas.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q1" value="E" />
+            <label class="form-check-label">I, II, III e IV.</label>
+          </div>
+          <div id="f1" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">Questão 2 – Conceito de Fisioterapia</h5>
+          <p>
+            A Fisioterapia é definida como uma Ciência da Saúde que estuda, previne e trata os distúrbios cinéticos
+            funcionais. Baseado nesta definição, qual dos conceitos abaixo NÃO define adequadamente a Fisioterapia?
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q2" value="A" />
+            <label class="form-check-label">É uma profissão da área da saúde de grande relevância social, dirigida aos
+              indivíduos portadores de perturbações ou ausência de movimento, que os levem a incapacidade funcional de
+              órgãos ou sistemas do corpo humano.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q2" value="B" />
+            <label class="form-check-label">Fisioterapia é uma ciência aplicada, cujo objeto de estudo é o movimento
+              humano em todas as suas formas de expressão e potencialidades... com objetivos de preservar, manter,
+              desenvolver ou restaurar a integridade de órgão, sistema ou função.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q2" value="C" />
+            <label class="form-check-label">A Fisioterapia pode ser definida como tratamento de pacientes incapacitados
+              por doenças, traumatismos ou perda de uma parte do corpo.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q2" value="D" />
+            <label class="form-check-label">A Fisioterapia é um ramo da Medicina que trata e reabilita inúmeras doenças
+              orgânicas deixando a prevenção primária a critério da Medicina Preventiva.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q2" value="E" />
+            <label class="form-check-label">A Fisioterapia pode ser definida como uma ciência que estuda o movimento
+              humano, suas disfunções e atua na prevenção, avaliação e tratamento de doenças, visando a promoção,
+              maintenance e recuperação da funcionalidade do corpo.</label>
+          </div>
+          <div id="f2" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">Questão 3 – Competências e Autonomia</h5>
+          <p>
+            A regulamentação da Fisioterapia no Brasil estabelece as competências e a natureza da profissão. Analise as
+            afirmações abaixo sobre o conceito e a legislação da área:<br><br>
+            I. O Decreto-Lei nº 938/1969 define a Fisioterapia como atividade de nível superior voltada a restaurar e
+            conservar a capacidade física.<br>
+            II. O profissional tem autonomia para elaborar o diagnóstico cinesiológico funcional e prescrever o
+            tratamento fisioterapêutico.<br>
+            III. A atuação fisioterapêutica é restrita ao ambiente hospitalar e à fase curativa das doenças.<br><br>
+            Assinale a sequência correta de Verdadeiro (V) e Falso (F):
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q3" value="A" />
+            <label class="form-check-label">V – V – F</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q3" value="B" />
+            <label class="form-check-label">V – F – F</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q3" value="C" />
+            <label class="form-check-label">V – V – V</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q3" value="D" />
+            <label class="form-check-label">F – V – V</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q3" value="E" />
+            <label class="form-check-label">F – F – F</label>
+          </div>
+          <div id="f3" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">Questão 4 – Decreto-Lei nº 938/1969</h5>
+          <p>
+            O Decreto-Lei nº 938, publicado em 13 de outubro de 1969, é considerado o "divisor de águas" para a
+            Fisioterapia no Brasil. Assinale a alternativa que descreve corretamente uma de suas principais
+            determinações:
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q4" value="A" />
+            <label class="form-check-label">Extinguiu a necessidade de formação em nível superior para o exercício da
+              profissão.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q4" value="B" />
+            <label class="form-check-label">Definiu a Fisioterapia como uma atividade de nível médio, subordinada
+              exclusivamente à medicina.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q4" value="C" />
+            <label class="form-check-label">Regulamentou a Fisioterapia como atividade de nível superior, voltada a
+              restaurar, desenvolver e conservar a capacidade física do indivíduo.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q4" value="D" />
+            <label class="form-check-label">Criou imediatamente o Conselho Federal de Fisioterapia e Terapia Ocupacional
+              (COFFITO).</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q4" value="E" />
+            <label class="form-check-label">Estabeleceu que o fisioterapeuta não possui autonomia para realizar o
+              diagnóstico dos distúrbios cinético-funcionais.</label>
+          </div>
+          <div id="f4" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">Questão 5 – Exercício Legal da Profissão</h5>
+          <p>
+            A fisioterapia é regulamentada pelo COFFITO. Para que o fisioterapeuta possa exercer legalmente a profissão,
+            é imprescindível que ele porte consigo o seguinte documento:
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q5" value="A" />
+            <label class="form-check-label">Certificado de Conclusão do Curso</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q5" value="B" />
+            <label class="form-check-label">A carteira Nacional de Habilitação</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q5" value="C" />
+            <label class="form-check-label">Certificado de Pessoa Física</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q5" value="D" />
+            <label class="form-check-label">Carteira de Registro Profissional</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q5" value="E" />
+            <label class="form-check-label">Registro de Identificação</label>
+          </div>
+          <div id="f5" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">Questão 6 – Lei nº 6.316/1975</h5>
+          <p>
+            A consolidação da Fisioterapia e da Terapia Ocupacional no Brasil foi fortalecida pela criação de órgãos. A
+            Lei nº 6.316, de 17 de dezembro de 1975, foi o instrumento legal que instituiu o sistema de conselhos.
+            Assinale a alternativa correta:
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q6" value="A" />
+            <label class="form-check-label">A Lei nº 6.316/75 extinguiu a autonomia do fisioterapeuta para realizar
+              diagnósticos.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q6" value="B" />
+            <label class="form-check-label">Esta lei criou o Conselho Federal (COFFITO) and os Conselhos Regionais
+              (CREFITOs) de Fisioterapia e Terapia Ocupacional.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q6" value="C" />
+            <label class="form-check-label">O COFFITO ficou responsável exclusivamente pela fiscalização direta do
+              exercício profissional em cada estado.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q6" value="D" />
+            <label class="form-check-label">Os CREFITOs assumiram a função de legislar e estabelecer o Código de Ética
+              da profissão.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q6" value="E" />
+            <label class="form-check-label">A referida lei definiu que a Fisioterapia deixaria de ser uma profissão de
+              nível superior.</label>
+          </div>
+          <div id="f6" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">Questão 7 – Lei nº 8.856/1994</h5>
+          <p>
+            A regulamentação da Fisioterapia no Brasil é composta por um conjunto de dispositivos legais. Assinale a
+            alternativa que descreve o principal objetivo da Lei nº 8.856/94:
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q7" value="A" />
+            <label class="form-check-label">Criou o Conselho Federal de Fisioterapia e Terapia Ocupacional
+              (COFFITO).</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q7" value="B" />
+            <label class="form-check-label">Estabeleceu o Código de Ética Profissional da categoria.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q7" value="C" />
+            <label class="form-check-label">Fixou a jornada de trabalho dos fisioterapeutas e terapeutas ocupacionais
+              em, no máximo, 30 horas semanais.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q7" value="D" />
+            <label class="form-check-label">Regulamentou a Fisioterapia como uma profissão de nível médio.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q7" value="E" />
+            <label class="form-check-label">Definiu o símbolo oficial da Fisioterapia e suas cores obrigatórias.</label>
+          </div>
+          <div id="f7" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">Questão 8 – Cronologia Histórica</h5>
+          <p>
+            A profissão de fisioterapia surgiu a partir de diversos conhecimentos e práticas. Analise os eventos
+            abaixo:<br><br>
+            1. Em 1951, primeiro curso técnico USP (1 ano).<br>
+            2. Grandes Guerras Mundiais e a consolidação como profissão.<br>
+            3. Decreto-Lei 938/69 (nível superior).<br>
+            4. Vinda da Família Real em 1808.<br>
+            5. Antiguidade (Hoong-Ti 2698 a.C. e Aristóteles 384 a.C.).<br><br>
+            Assinale a alternativa que organiza de forma cronológica a evolução da Fisioterapia:
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q8" value="A" />
+            <label class="form-check-label">5, 4, 2, 1, 3</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q8" value="B" />
+            <label class="form-check-label">2, 3, 4, 5, 1</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q8" value="C" />
+            <label class="form-check-label">5, 2, 4, 1, 3</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q8" value="D" />
+            <label class="form-check-label">1, 2, 3, 4, 5</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q8" value="E" />
+            <label class="form-check-label">5, 4, 1, 2, 3</label>
+          </div>
+          <div id="f8" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">Questão 9 – Trajetória no Brasil</h5>
+          <p>
+            A trajetória da Fisioterapia no Brasil é marcada por uma transição gradual. Analise as afirmações a
+            seguir:<br><br>
+            I. O início da utilização de recursos físicos no Brasil remonta a 1879, impulsionado por acidentes de
+            trabalho na industrialização.<br>
+            II. A Segunda Guerra Mundial (1939-1945) foi um fator decisivo para o desenvolvimento da área e modernização
+            dos serviços.<br>
+            III. O primeiro curso de Fisioterapia no Brasil foi criado em 1951 pelo Dr. Waldo Rolim de Moraes (1
+            ano).<br>
+            IV. Em 1963, Parecer 388/63, os cursos passaram a ter 3 anos e o profissional já era independente.<br><br>
+            Assinale a alternativa correta:
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q9" value="A" />
+            <label class="form-check-label">Apenas as afirmativas I e II estão corretas.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q9" value="B" />
+            <label class="form-check-label">Apenas as afirmativas I, II e III estão corretas.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q9" value="C" />
+            <label class="form-check-label">Apenas as afirmativas III e IV estão corretas.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q9" value="D" />
+            <label class="form-check-label">Apenas as afirmativas II, III e IV estão corretas.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q9" value="E" />
+            <label class="form-check-label">Todas as afirmativas estão corretas.</label>
+          </div>
+          <div id="f9" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">Questão 10 – Práticas na Antiguidade</h5>
+          <p>
+            Durante o período da Antiguidade (4.000 a.C. a 395 d.C.), assinale a alternativa que descreve corretamente
+            as práticas ou personagens desse período:
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q10" value="A" />
+            <label class="form-check-label">Hipócrates criou o termo "Ortopedia".</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q10" value="B" />
+            <label class="form-check-label">O imperador chinês Hoong-Ti desenvolveu uma ginástica curativa que focava em
+              exercícios respiratórios e na prevenção da obstrução de órgãos.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q10" value="C" />
+            <label class="form-check-label">Na Antiguidade, a eletroterapia era inexistente.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q10" value="D" />
+            <label class="form-check-label">Galeno planejou ginástica para poliomielite.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q10" value="E" />
+            <label class="form-check-label">Os sacerdotes evitavam o uso de argila.</label>
+          </div>
+          <div id="f10" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">Questão 11 – Atribuições Clínicas</h5>
+          <p>
+            O fisioterapeuta é um profissional de saúde, com formação acadêmica superior, habilitado à construção do
+            diagnóstico cinético funcional. Assinale a alternativa correta:
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q11" value="A" />
+            <label class="form-check-label">Elaborar o diagnóstico clínico e prescrever, planejar, ordenar, analisar,
+              supervisionar e avaliar os projetos fisioterapêuticos quanto à respectiva eficácia, à resolutividade e às
+              condições de alta.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q11" value="B" />
+            <label class="form-check-label">Integrar a equipe multiprofissional desde que na qualidade de chefe de
+              equipe.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q11" value="C" />
+            <label class="form-check-label">Todos são obrigados a desenvolver estudos e pesquisas.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q11" value="D" />
+            <label class="form-check-label">Exige-se registro no conselho e especialização em nível lato sensu para
+              exercer.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q11" value="E" />
+            <label class="form-check-label">Desenvolver protótipos de produtos pode ser uma das referidas
+              atribuições.</label>
+          </div>
+          <div id="f11" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">Questão 12 – Idade Média</h5>
+          <p>
+            Durante a Idade Média (séculos IV a XV), assinale a alternativa que descreve corretamente as características
+            desse período:
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q12" value="A" />
+            <label class="form-check-label">Houve um grande avanço nos estudos científicos.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q12" value="B" />
+            <label class="form-check-label">O corpo passou a ser altamente valorizado.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q12" value="C" />
+            <label class="form-check-label">As enfermidades eram frequentemente tratadas por meio de exorcismos, pois o
+              corpo era visto apenas como o "guardador do espírito".</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q12" value="D" />
+            <label class="form-check-label">A ginástica médica tornou-se a principal ferramenta de tratamento.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q12" value="E" />
+            <label class="form-check-label">O termo "Cinesioterapia" foi criado pelos sacerdotes medievais.</label>
+          </div>
+          <div id="f12" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">Questão 13 – Renascimento</h5>
+          <p>
+            Durante o Renascimento (séculos XV e XVI), assinale a alternativa que descreve corretamente as
+            características e avanços desse período:
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q13" value="A" />
+            <label class="form-check-label">O período foi marcado pela interrupção dos estudos.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q13" value="B" />
+            <label class="form-check-label">Surgiram as primeiras ideias de prevenção primária, com a recomendação de
+              exercícios para conservar o estado saudável e para pessoas sedentárias.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q13" value="C" />
+            <label class="form-check-label">A eletroterapia tornou-se o principal recurso para tuberculose.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q13" value="D" />
+            <label class="form-check-label">O foco da reabilitação era restrito apenas a soldados.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q13" value="E" />
+            <label class="form-check-label">Nicolas Andry foi o responsável por introduzir o termo
+              "Cinesioterapia".</label>
+          </div>
+          <div id="f13" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">Questão 14 – Revolução Industrial</h5>
+          <p>
+            Durante os séculos XVIII e XIX, a Revolução Industrial trouxe mudanças drásticas. Assinale a alternativa que
+            descreve corretamente o impacto desse período:
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q14" value="A" />
+            <label class="form-check-label">Houve um fortalecimento das práticas de prevenção primária.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q14" value="B" />
+            <label class="form-check-label">O "inchaço urbano" e as condições sanitárias precárias levaram ao surgimento
+              de novas doenças, como a cólera e a tuberculose pulmonar.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q14" value="C" />
+            <label class="form-check-label">A fisioterapia passou a focar exclusivamente em atletas.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q14" value="D" />
+            <label class="form-check-label">O interesse em recuperar o doente era apenas humanitário.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q14" value="E" />
+            <label class="form-check-label">As máquinas erradicaram as doenças ocupacionais.</label>
+          </div>
+          <div id="f14" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">Questão 15 – Regulamentação da Acupuntura</h5>
+          <p>
+            A acupuntura é reconhecida como uma especialidade da área. Assinale a alternativa que descreve corretamente
+            um marco na sua regulamentação:
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q15" value="A" />
+            <label class="form-check-label">Foi definida como especialidade pela primeira vez em 2023.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q15" value="B" />
+            <label class="form-check-label">Baseia-se na visão fragmentada do corpo.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q15" value="C" />
+            <label class="form-check-label">Em dezembro de 2000, a Resolução nº 219 definiu oficialmente a acupuntura
+              como especialidade para os profissionais fisioterapeutas.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q15" value="D" />
+            <label class="form-check-label">A prática no SUS foi estabelecida em 1985.</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="q15" value="E" />
+            <label class="form-check-label">A "Teoria dos 5 Elementos" liga-se exclusivamente a estruturas
+              ósseas.</label>
+          </div>
+          <div id="f15" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-success">Questão 16a – Cinesioterapia</h5>
+          <p>
+            Qual é a técnica fisioterapêutica descrita a seguir? "O recurso principal é o movimento; e as metas são o
+            fortalecimento, o equilíbrio e a coordenação".
+          </p>
+          <input type="text" class="form-control" name="q16a" placeholder="Digite o nome da técnica aqui..." />
+          <div id="f16a" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-success">Questão 16b – Hidroterapia</h5>
+          <p>
+            Julgue as afirmações abaixo sobre a Hidroterapia preenchendo o campo com as respectivas sequências de V ou
+            F:<br><br>
+            I. Ação térmica por bolsas de água quente ou fria.<br>
+            II. Ação do movimento por exercícios terapêuticos.<br>
+            III. Ação mecânica pelo uso do turbilhão.<br>
+            IV. Ação do movimento pelo uso da piscina terapêutica.
+          </p>
+          <input type="text" class="form-control" name="q16b" placeholder="Exemplo de resposta: V-V-V-V" />
+          <div id="f16b" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-success">Questão 17 – COFFITO vs CREFITOs</h5>
+          <p>
+            Diferencie, de maneira sucinta, as funções institucionais do Conselho Federal (COFFITO) em relação aos
+            Conselhos Regionais (CREFITOs).
+          </p>
+          <textarea class="form-control" rows="3" name="q17"
+            placeholder="Digite sua resposta explicativa aqui..."></textarea>
+          <div id="f17" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-success">Questão 18 – Símbolo da Fisioterapia</h5>
+          <p>
+            Cite os elementos gráficos e as cores que compõem o Símbolo Oficial da Fisioterapia, indicando resumidamente
+            seus respectivos significados.
+          </p>
+          <textarea class="form-control" rows="4" name="q18"
+            placeholder="Fale sobre as serpentes, o raio, a cor verde e a cor amarela..."></textarea>
+          <div id="f18" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-3 question-card">
+        <div class="card-body">
+          <h5 class="fw-bold text-success">Questão 19 – Especialidades Clínicas</h5>
+          <p>
+            Qual especialidade da fisioterapia utiliza primordialmente a terapia manual e a eletroterapia para tratar
+            disfunções decorrentes de fraturas, entorses e períodos pós-operatórios?
+          </p>
+          <input type="text" class="form-control" name="q19"
+            placeholder="Digite o nome completo da especialidade aqui..." />
+          <div id="f19" class="feedback-box alert d-none mt-3"></div>
+        </div>
+      </div>
+
+      <div class="d-grid gap-2 mt-4">
+        <button type="button" id="submitQuiz" class="btn btn-primary btn-lg">
+          Corrigir Simulado
+        </button>
+        <button type="button" id="resetQuiz" class="btn btn-outline-secondary d-none">
+          Refazer Teste
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <section id="resultsSection" class="container my-5 d-none">
+    <div class="result-card card border-0 bg-white shadow rounded-4 text-center p-4">
+      <div class="card-body">
+        <h2 class="fw-bold h4 text-dark mb-3">
+          Painel de Rendimento Acadêmico
+        </h2>
+        <div id="scoreDisplay" class="display-3 fw-bold text-success mb-2">
+          0%
+        </div>
+        <p id="scoreFeedback" class="text-secondary small mb-0"></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-white text-center py-4 mt-5 border-top border-secondary">
+    <div class="container">
+      <p class="mb-1 fw-bold">FisioPrep</p>
+      <p class="x-small opacity-50 mb-0">
+        Plataforma de Revisão Acadêmica Integrada • 2026
+      </p>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="btn btn-primary position-fixed rounded-circle shadow" style="
         bottom: 25px;
         right: 25px;
         width: 45px;
         height: 45px;
         z-index: 1030;
         display: none;
-      "
-    >
-      ↑
-    </button>
+      ">
+    ↑
+  </button>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
 </html>

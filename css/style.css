@@ -47,7 +47,7 @@ body.dark {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: Inter, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   /* Apenas as props que realmente precisam de transição */
   transition:
     background-color 0.3s ease,
@@ -59,8 +59,6 @@ body {
 
 /* ========================================
    HEADER
-   – backdrop-filter removido: dispara
-     composite layers em toda rolagem
 ======================================== */
 
 .app-header {
@@ -100,7 +98,6 @@ body.dark .app-header {
   background: var(--card);
   box-shadow: var(--shadow);
   cursor: pointer;
-  /* Só escala — não dispara layout nem paint */
   transition: transform 0.15s ease;
   will-change: transform;
 }
@@ -111,8 +108,6 @@ body.dark .app-header {
 
 /* ========================================
    PROGRESS BAR
-   – width é animada; GPU não ajuda aqui,
-     mas a transição linear curta evita jank
 ======================================== */
 
 .progress-wrapper {
@@ -165,7 +160,6 @@ body.dark .app-header {
 
 /* ========================================
    MENU NAV CARDS
-   – só translateY: não dispara paint
 ======================================== */
 
 .study-nav {
@@ -226,7 +220,6 @@ body.dark .app-header {
 
 /* ========================================
    ACCORDION
-   – contain: layout+style isola reflows
 ======================================== */
 
 .accordion-item {
@@ -241,7 +234,6 @@ body.dark .app-header {
 .accordion-button {
   font-weight: 600;
   padding: 18px;
-  /* Só cor de fundo e texto — ambas baratas */
   transition:
     background-color 0.18s ease,
     color 0.18s ease;
@@ -263,8 +255,6 @@ body.dark .accordion-button:not(.collapsed) {
 
 /* ========================================
    FLASHCARDS
-   – promote cada card para compositor
-     via translateZ(0); evita jank no flip
 ======================================== */
 
 .flashcards-grid {
@@ -286,7 +276,6 @@ body.dark .accordion-button:not(.collapsed) {
   -webkit-transform-style: preserve-3d;
   cursor: pointer;
   will-change: transform;
-  /* Sobe para camada própria logo de cara */
   transform: translateZ(0);
 }
 
@@ -348,7 +337,6 @@ body.dark .accordion-button:not(.collapsed) {
   margin-bottom: 10px;
   border-radius: 12px;
   cursor: pointer;
-  /* Só escala — GPU-friendly */
   transition: transform 0.1s ease;
   will-change: transform;
 }
@@ -399,8 +387,6 @@ body.dark .option {
   font-weight: 800;
 }
 
-/* Fade-in usando opacity+transform:
-   ambas rodam no compositor sem layout */
 .feedback-box {
   contain: layout style;
   animation: fadeIn 0.25s ease forwards;
@@ -513,22 +499,17 @@ footer {
 
 /* ========================================
    ACCORDION — ZERO TRAVAMENTOS (CORRIGIDO)
-   Removemos o conflito de propriedades e 
-   forçamos a abertura instantânea.
 ======================================== */
 
-/* Desativa completamente a animação de altura do Bootstrap */
 .accordion-collapse {
   transition: none !important;
   animation: none !important;
 }
 
-/* Remove o efeito elástico ou rotação lenta do ícone da seta */
 .accordion-button::after {
   transition: none !important;
 }
 
-/* Garante que o Bootstrap trate o abrir/fechar de forma nativa e imediata */
 .accordion-collapse:not(.show) {
   display: none !important;
 }
